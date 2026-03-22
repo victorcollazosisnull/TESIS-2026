@@ -131,8 +131,6 @@ GameObject:
   - component: {fileID: 13436628}
   - component: {fileID: 13436627}
   - component: {fileID: 13436626}
-  - component: {fileID: 13436630}
-  - component: {fileID: 13436631}
   - component: {fileID: 13436632}
   m_Layer: 6
   m_Name: Cube
@@ -234,32 +232,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1264451978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &13436630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13436625}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: add56de5cd6a0644fa18c887606910b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestInteractable
---- !u!114 &13436631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13436625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickupObject
-  normalMat: {fileID: 0}
-  highlightMat: {fileID: 0}
 --- !u!54 &13436632
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -860,8 +832,6 @@ GameObject:
   - component: {fileID: 608460518}
   - component: {fileID: 608460517}
   - component: {fileID: 608460516}
-  - component: {fileID: 608460515}
-  - component: {fileID: 608460514}
   - component: {fileID: 608460513}
   m_Layer: 6
   m_Name: Cube (1)
@@ -897,32 +867,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &608460514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608460512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickupObject
-  normalMat: {fileID: 0}
-  highlightMat: {fileID: 0}
---- !u!114 &608460515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608460512}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: add56de5cd6a0644fa18c887606910b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestInteractable
 --- !u!65 &608460516
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1261,7 +1205,7 @@ Transform:
   m_GameObject: {fileID: 1264451977}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.64249, y: -0, z: -0.06565}
+  m_LocalPosition: {x: -24.64249, y: -0, z: 3.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
