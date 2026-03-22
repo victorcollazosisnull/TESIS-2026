@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PickupObject : MonoBehaviour
+public class PickupObject : MonoBehaviour, IInteractable
 {
     private Rigidbody rb;
     private Collider col;
@@ -26,5 +26,15 @@ public class PickupObject : MonoBehaviour
         rb.useGravity = true;
 
         col.enabled = true; 
+    }
+
+    public void Interact()
+    {
+        PlayerHold playerHold = FindAnyObjectByType<PlayerHold>();
+
+        if (!playerHold.IsHolding())
+        {
+            playerHold.PickUp(this);
+        }
     }
 }

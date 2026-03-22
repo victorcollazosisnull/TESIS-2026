@@ -22,32 +22,34 @@ public class PlayerInteractor : MonoBehaviour
 
     private void TryInteract()
     {
-        if (playerHold.IsHolding())
-        {
-            playerHold.Drop();
-            return;
-        }
-
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayer))
         {
             Debug.Log("Objeto es: " + hit.collider.name);
 
-            PickupObject pickup = hit.collider.GetComponent<PickupObject>();
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
 
-            if (pickup != null)
+            if (interactable != null)
             {
-                playerHold.PickUp(pickup);
+                interactable.Interact();
             }
             else
             {
-                Debug.Log("no tiene el script PickupObject");
+                if (playerHold.IsHolding())
+                {
+                    playerHold.Drop();
+                    Debug.Log("Soltaste el objeto");
+                }
             }
         }
         else
         {
-            Debug.Log("no hay nada");
+            if (playerHold.IsHolding())
+            {
+                playerHold.Drop();
+                Debug.Log("Soltaste el objeto");
+            }
         }
     }
 }

@@ -11,6 +11,11 @@ public class PlayerHold : MonoBehaviour
         return currentObject != null;
     }
 
+    public PickupObject GetHeldObject()
+    {
+        return currentObject;
+    }
+
     public void PickUp(PickupObject obj)
     {
         currentObject = obj;
