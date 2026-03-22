@@ -1,31 +1,55 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CuttingStation : MonoBehaviour, IInteractable
 {
+    [Header("References")]
     [SerializeField] private PlayerHold playerHold;
+    [SerializeField] private Transform placePoint; 
+
+    private PickupObject currentObject;
 
     public void Interact()
     {
-        if (!playerHold.IsHolding()) return;
-
-        PickupObject held = playerHold.GetHeldObject();
-
-        Ingredient ingredient = held.GetComponent<Ingredient>();
-
-        if (ingredient == null)
+        if (playerHold.IsHolding())
         {
-            Debug.Log("No es un ingrediente");
+            if (currentObject != null)
+            {
+                Debug.Log("Ya hay algo en la mesa");
+                return;
+            }
+
+            PickupObject held = playerHold.GetHeldObject();
+
+            currentObject = held;
+
+            playerHold.Drop();
+
+            held.transform.position = placePoint.position;
+            held.transform.rotation = placePoint.rotation;
+
+            Debug.Log("Objeto colocado en mesa");
             return;
         }
 
-        if (ingredient.isCut)
+        if (currentObject != null)
         {
-            Debug.Log("Ya est� cortado");
-            return;
+            Ingredient ingredient = currentObject.GetComponent<Ingredient>();
+
+            if (ingredient == null)
+            {
+                Debug.Log("No es ingrediente");
+                return;
+            }
+
+            if (ingredient.isCut)
+            {
+                Debug.Log("Ya está cortado");
+                return;
+            }
+
+            ingredient.isCut = true;
+
+            Debug.Log("Ingrediente cortado");
         }
-
-        ingredient.isCut = true;
-
-        Debug.Log("Ingrediente cortado");
     }
 }
