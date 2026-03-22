@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6111310157442112640}
   - component: {fileID: 2109556999256054412}
   - component: {fileID: 7120838189835306377}
-  - component: {fileID: 6037537685379298923}
+  - component: {fileID: 6243102804093457369}
   m_Layer: 6
   m_Name: Papa
   m_TagString: Untagged
@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 1629887441825961735}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.002620847, y: 0.49352992, z: -0.016461914}
-  m_LocalScale: {x: 0.12514573, y: 0.12514573, z: 0.12514573}
+  m_LocalPosition: {x: 0.0022268, y: 0.44301, z: -0.02103}
+  m_LocalScale: {x: 0.17342228, y: 0.17342228, z: 0.17342228}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
+  normalMat: {fileID: 2100000, guid: 9a2420a671acdc64fa4ac67e8e2c9ceb, type: 2}
+  highlightMat: {fileID: 2100000, guid: e45cec046d5db1f4291946f658ec8b91, type: 2}
 --- !u!114 &7120838189835306377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,8 +150,8 @@ MonoBehaviour:
   ingredientName: Papa
   isCut: 0
   isCooked: 0
---- !u!136 &6037537685379298923
-CapsuleCollider:
+--- !u!135 &6243102804093457369
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -166,8 +168,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.0566295
-  m_Height: 2.212491
-  m_Direction: 1
+  serializedVersion: 3
+  m_Radius: 1.1062455
   m_Center: {x: 0.008161634, y: -0.0946375, z: 1.046467}

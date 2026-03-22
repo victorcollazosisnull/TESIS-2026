@@ -258,6 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
+  normalMat: {fileID: 0}
+  highlightMat: {fileID: 0}
 --- !u!54 &13436632
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -690,6 +692,8 @@ GameObject:
   - component: {fileID: 449021016}
   - component: {fileID: 449021015}
   - component: {fileID: 449021014}
+  - component: {fileID: 449021020}
+  - component: {fileID: 449021019}
   m_Layer: 6
   m_Name: CuttingStation
   m_TagString: Untagged
@@ -756,7 +760,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 67e5e9652e5127b45b0764f1915d3950, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -803,6 +807,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &449021019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449021013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupObject
+  normalMat: {fileID: 2100000, guid: 67e5e9652e5127b45b0764f1915d3950, type: 2}
+  highlightMat: {fileID: 2100000, guid: 174bc7653b8b88d49bc06a42336182c5, type: 2}
+--- !u!54 &449021020
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449021013}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &608460512
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
+  normalMat: {fileID: 0}
+  highlightMat: {fileID: 0}
 --- !u!114 &608460515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -982,6 +1029,8 @@ GameObject:
   - component: {fileID: 616279729}
   - component: {fileID: 616279728}
   - component: {fileID: 616279732}
+  - component: {fileID: 616279734}
+  - component: {fileID: 616279733}
   m_Layer: 6
   m_Name: Zona_Tomate
   m_TagString: Untagged
@@ -1097,6 +1146,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientSpawner
   ingredientPrefab: {fileID: 9165869696455996783, guid: c2970b91da0db294bb7e68d8c31baf55, type: 3}
   playerHold: {fileID: 1892092985}
+--- !u!114 &616279733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616279727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupObject
+  normalMat: {fileID: 2100000, guid: 9fd70031b16763142bb9779f87271d21, type: 2}
+  highlightMat: {fileID: 2100000, guid: 66472a786d229e4489721da07010efd9, type: 2}
+--- !u!54 &616279734
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616279727}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1361,8 @@ GameObject:
   - component: {fileID: 1453013963}
   - component: {fileID: 1453013962}
   - component: {fileID: 1453013966}
+  - component: {fileID: 1453013968}
+  - component: {fileID: 1453013967}
   m_Layer: 6
   m_Name: Zona_Papa
   m_TagString: Untagged
@@ -1386,6 +1478,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientSpawner
   ingredientPrefab: {fileID: 2109556999256054412, guid: 34f11968d7fa6e74488e8cccfa3ed61f, type: 3}
   playerHold: {fileID: 1892092985}
+--- !u!114 &1453013967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453013961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupObject
+  normalMat: {fileID: 2100000, guid: 784188945ebf0384fbc3c15d8fe66bb7, type: 2}
+  highlightMat: {fileID: 2100000, guid: d964eea15277f8944a3642b707b87146, type: 2}
+--- !u!54 &1453013968
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453013961}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1 &1523778146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,6 +1532,8 @@ GameObject:
   - component: {fileID: 1523778149}
   - component: {fileID: 1523778148}
   - component: {fileID: 1523778147}
+  - component: {fileID: 1523778153}
+  - component: {fileID: 1523778152}
   m_Layer: 6
   m_Name: CuttingStation
   m_TagString: Untagged
@@ -1465,7 +1600,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 67e5e9652e5127b45b0764f1915d3950, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1512,6 +1647,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1523778152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523778146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupObject
+  normalMat: {fileID: 2100000, guid: 67e5e9652e5127b45b0764f1915d3950, type: 2}
+  highlightMat: {fileID: 2100000, guid: 174bc7653b8b88d49bc06a42336182c5, type: 2}
+--- !u!54 &1523778153
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523778146}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1652835096
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,7 +1965,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892092976}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

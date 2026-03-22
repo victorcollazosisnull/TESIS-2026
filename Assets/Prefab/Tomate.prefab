@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 87721757481183d4c9ef04722c96f556, type: 3}
       propertyPath: m_LocalScale.x
-      value: 18.967342
+      value: 24.01226
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87721757481183d4c9ef04722c96f556, type: 3}
       propertyPath: m_LocalScale.y
-      value: 18.967342
+      value: 24.01226
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87721757481183d4c9ef04722c96f556, type: 3}
       propertyPath: m_LocalScale.z
-      value: 17.22065
+      value: 21.800985
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87721757481183d4c9ef04722c96f556, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87721757481183d4c9ef04722c96f556, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2699
+      value: 1.2207
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 87721757481183d4c9ef04722c96f556, type: 3}
       propertyPath: m_LocalPosition.z
@@ -129,6 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
+  normalMat: {fileID: 7211448773848044386, guid: 87721757481183d4c9ef04722c96f556, type: 3}
+  highlightMat: {fileID: 2100000, guid: ffba128ea55eb494687fc607f11123eb, type: 2}
 --- !u!114 &4563210901025053715
 MonoBehaviour:
   m_ObjectHideFlags: 0
