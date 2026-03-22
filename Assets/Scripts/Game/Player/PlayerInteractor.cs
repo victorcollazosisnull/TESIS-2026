@@ -7,6 +7,9 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private LayerMask interactLayer;
     [SerializeField] private Camera cam;
 
+    [Header("References")]
+    [SerializeField] private PlayerHold playerHold;
+
     private void OnEnable()
     {
         PlayerInputs.interactInput += TryInteract;
@@ -19,16 +22,32 @@ public class PlayerInteractor : MonoBehaviour
 
     private void TryInteract()
     {
+        if (playerHold.IsHolding())
+        {
+            playerHold.Drop();
+            return;
+        }
+
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayer))
         {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            Debug.Log("Objeto es: " + hit.collider.name);
 
-            if (interactable != null)
+            PickupObject pickup = hit.collider.GetComponent<PickupObject>();
+
+            if (pickup != null)
             {
-                interactable.Interact();
+                playerHold.PickUp(pickup);
             }
+            else
+            {
+                Debug.Log("no tiene el script PickupObject");
+            }
+        }
+        else
+        {
+            Debug.Log("no hay nada");
         }
     }
 }
