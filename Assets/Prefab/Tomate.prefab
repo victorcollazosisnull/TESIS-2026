@@ -146,6 +146,7 @@ MonoBehaviour:
   ingredientName: Tomate
   isCut: 0
   isCooked: 0
+  cutPrefab: {fileID: 8232792263356381893, guid: c4978e0c642573240925358ae2eb4072, type: 3}
 --- !u!135 &8208554045140389022
 SphereCollider:
   m_ObjectHideFlags: 0

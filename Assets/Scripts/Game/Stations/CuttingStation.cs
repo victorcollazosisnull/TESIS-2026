@@ -20,7 +20,17 @@ public class CuttingStation : MonoBehaviour, IInteractable
 
             PickupObject held = playerHold.GetHeldObject();
 
+            Ingredient ingredient = held.GetComponent<Ingredient>();
+
+            if (ingredient != null && ingredient.isCut)
+            {
+                Debug.Log("Esto ya está cortado");
+                return;
+            }
+
             currentObject = held;
+            held.Lock();
+            held.GetComponent<Collider>().enabled = false;
 
             playerHold.Drop();
 
@@ -54,6 +64,24 @@ public class CuttingStation : MonoBehaviour, IInteractable
             }
 
             ingredient.isCut = true;
+
+            Vector3 spawnPos = placePoint.position;
+            Quaternion spawnRot = placePoint.rotation;
+
+            Destroy(currentObject.gameObject);
+
+            if (ingredient.cutPrefab != null)
+            {
+                PickupObject cutObj = Instantiate(ingredient.cutPrefab, spawnPos, spawnRot);
+
+                cutObj.SetCanDrop(false);
+
+                cutObj.transform.SetParent(null);
+
+                cutObj.GetComponent<Collider>().enabled = true;
+
+                currentObject = null;
+            }
 
             Debug.Log("Ingrediente cortado");
         }

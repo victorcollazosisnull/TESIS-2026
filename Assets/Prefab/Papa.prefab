@@ -150,6 +150,7 @@ MonoBehaviour:
   ingredientName: Papa
   isCut: 0
   isCooked: 0
+  cutPrefab: {fileID: -2786044282367205837, guid: abc5f360177f8db47a72578b237bee7b, type: 3}
 --- !u!135 &6243102804093457369
 SphereCollider:
   m_ObjectHideFlags: 0

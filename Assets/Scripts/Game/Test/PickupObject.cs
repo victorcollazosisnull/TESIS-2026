@@ -6,6 +6,10 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
     private Rigidbody rb;
     private Collider col;
 
+    [Header("Settings Pickup")]
+    private bool isLocked = false;
+    [SerializeField] private bool canDrop = true;
+
     [Header("Highlight")]
     [SerializeField] private Material normalMat;
     [SerializeField] private Material highlightMat;
@@ -41,8 +45,30 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
         col.enabled = true;
     }
 
+    public void Lock()
+    {
+        isLocked = true;
+    }
+
+    public void Unlock()
+    {
+        isLocked = false;
+    }
+
+    public void SetCanDrop(bool value)
+    {
+        canDrop = value;
+    }
+
+    public bool CanDrop()
+    {
+        return canDrop;
+    }
+
     public void Interact()
     {
+        if (isLocked) return;
+
         PlayerHold playerHold = FindAnyObjectByType<PlayerHold>();
 
         if (!playerHold.IsHolding())

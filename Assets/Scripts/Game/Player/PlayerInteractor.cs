@@ -71,7 +71,7 @@ public class PlayerInteractor : MonoBehaviour
             {
                 if (playerHold.IsHolding())
                 {
-                    playerHold.Drop();
+                    TryDrop();
                     Debug.Log("Soltaste el objeto");
                 }
             }
@@ -80,9 +80,29 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (playerHold.IsHolding())
             {
-                playerHold.Drop();
+                TryDrop();
                 Debug.Log("Soltaste el objeto");
             }
         }
     }
+
+    private void TryDrop()
+    {
+        if (!playerHold.IsHolding()) return;
+
+        PickupObject held = playerHold.GetHeldObject();
+
+        if (held != null)
+        {
+            if (!held.CanDrop())
+            {
+                Debug.Log("Este objeto no se puede soltar");
+                return;
+            }
+        }
+
+        playerHold.Drop();
+        Debug.Log("Soltaste el objeto");
+    }
+
 }

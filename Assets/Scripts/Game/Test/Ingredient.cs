@@ -6,4 +6,7 @@ public class Ingredient : MonoBehaviour
 
     public bool isCut = false;
     public bool isCooked = false;
+
+    [Header("Cut Result")]
+    public PickupObject cutPrefab;
 }
