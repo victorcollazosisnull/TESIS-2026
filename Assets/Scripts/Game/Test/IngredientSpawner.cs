@@ -10,9 +10,9 @@ public class IngredientSpawner : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (playerHold.IsHolding())
+        if (playerHold.IsHolding() || playerHold.HasKnife())
         {
-            Debug.Log("Ya tienes un objeto en la mano");
+            Debug.Log("Manos ocupadas");
             return;
         }
 

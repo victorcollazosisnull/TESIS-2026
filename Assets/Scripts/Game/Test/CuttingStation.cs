@@ -33,6 +33,12 @@ public class CuttingStation : MonoBehaviour, IInteractable
 
         if (currentObject != null)
         {
+            if (!playerHold.HasKnife())
+            {
+                Debug.Log("Necesitas cuchillo");
+                return;
+            }
+
             Ingredient ingredient = currentObject.GetComponent<Ingredient>();
 
             if (ingredient == null)
