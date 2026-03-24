@@ -25,7 +25,7 @@ public class PlateStation : MonoBehaviour, IInteractable
             return;
         }
 
-        if (ingredient.ingredientName != "TomateCut")
+        if (ingredient.ingredientName != "TomateCut" && (ingredient.ingredientName != "CebollaCut"))
         {
             Debug.Log("Este ingrediente no va en el plato aún");
             return;
