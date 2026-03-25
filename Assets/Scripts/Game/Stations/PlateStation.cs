@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Ingredient;
 
 public class PlateStation : MonoBehaviour, IInteractable
 {
@@ -7,7 +8,10 @@ public class PlateStation : MonoBehaviour, IInteractable
     [SerializeField] private PlayerHold playerHold;
     [SerializeField] private Transform[] ingredientPoints;
 
-    private List<string> ingredients = new List<string>();
+    [Header("Ingredients Finals")]
+    [SerializeField] private List<IngredientType> validIngredients;
+
+    private List<IngredientType> ingredients = new List<IngredientType>();
     private int currentIndex = 0;
 
     public void Interact()
@@ -25,9 +29,14 @@ public class PlateStation : MonoBehaviour, IInteractable
             return;
         }
 
-        if (ingredient.ingredientName != "TomateCut" && (ingredient.ingredientName != "CebollaCut"))
+        if (!validIngredients.Contains(ingredient.type))
         {
-            Debug.Log("Este ingrediente no va en el plato aún");
+            Debug.Log("Ingrediente no válido para plato");
+            return;
+        }
+        if (ingredients.Contains(ingredient.type))
+        {
+            Debug.Log("Ingrediente repetido");
             return;
         }
 
@@ -41,10 +50,24 @@ public class PlateStation : MonoBehaviour, IInteractable
         held.transform.localPosition = Vector3.zero;
         held.transform.localRotation = Quaternion.identity;
 
+        Rigidbody rb = held.GetComponent<Rigidbody>();
+        Collider col = held.GetComponent<Collider>();
+
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+
+        if (col != null)
+        {
+            col.enabled = false;
+        }
+
         held.Lock();
         held.SetCanDrop(false);
 
-        ingredients.Add(ingredient.ingredientName);
+        ingredients.Add(ingredient.type);
         currentIndex++;
 
         playerHold.Drop();

@@ -9,4 +9,25 @@ public class Ingredient : MonoBehaviour
 
     [Header("Cut Result")]
     public PickupObject cutPrefab;
+
+    [Header("Cook Result")]
+    public PickupObject cookedPrefab;
+
+    public enum IngredientType
+    {
+        Tomate,
+        Cebolla,
+        Papa,
+        Carne,
+
+        TomateCut,
+        CebollaCut,
+        PapaCut,
+        CarneCut,
+
+        CarneCooked,
+        PapaCooked
+    }
+
+    public IngredientType type;
 }

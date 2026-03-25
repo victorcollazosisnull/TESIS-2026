@@ -216,7 +216,9 @@ MonoBehaviour:
   ingredientName: Carne
   isCut: 0
   isCooked: 0
-  cutPrefab: {fileID: 0}
+  cutPrefab: {fileID: 6411109348272655935, guid: 82d600af7efc6824885f6005ef1dab9a, type: 3}
+  cookedPrefab: {fileID: 0}
+  type: 3
 --- !u!65 &5714025586591238606
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -173,3 +173,5 @@ MonoBehaviour:
   isCut: 1
   isCooked: 0
   cutPrefab: {fileID: 0}
+  cookedPrefab: {fileID: 5980855666263573120, guid: e74245972d6a89945b32c7c42743c984, type: 3}
+  type: 6

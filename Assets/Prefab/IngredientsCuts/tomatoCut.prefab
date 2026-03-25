@@ -173,3 +173,4 @@ MonoBehaviour:
   isCut: 1
   isCooked: 0
   cutPrefab: {fileID: 0}
+  type: 4

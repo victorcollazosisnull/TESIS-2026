@@ -136,6 +136,7 @@ MonoBehaviour:
   isCut: 0
   isCooked: 0
   cutPrefab: {fileID: -2944035555462238896, guid: d1748784041bc9945b82c621c83dc539, type: 3}
+  type: 1
 --- !u!135 &4291953867199210016
 SphereCollider:
   m_ObjectHideFlags: 0
