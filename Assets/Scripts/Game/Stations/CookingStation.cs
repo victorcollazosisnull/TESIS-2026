@@ -123,6 +123,8 @@ public class CookingStation : MonoBehaviour, IInteractable
             cookedObj.SetCanDrop(false);
             cookedObj.GetComponent<Collider>().enabled = true;
 
+            cookedObj.Unlock();
+
             currentObject = null;
         }
 

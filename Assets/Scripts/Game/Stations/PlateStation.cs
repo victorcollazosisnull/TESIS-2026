@@ -23,7 +23,7 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         if (ingredient == null) return;
 
-        if (!ingredient.isCut || ingredient.isCooked)
+        if (!ingredient.isCut && !ingredient.isCooked)
         {
             Debug.Log("Ingrediente no válido para plato");
             return;
@@ -55,13 +55,15 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         if (rb != null)
         {
+            rb.linearVelocity = Vector3.zero; 
+            rb.angularVelocity = Vector3.zero;
             rb.isKinematic = true;
             rb.useGravity = false;
         }
 
         if (col != null)
         {
-            col.enabled = false;
+            col.enabled = false; 
         }
 
         held.Lock();

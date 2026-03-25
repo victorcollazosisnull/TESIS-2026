@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
-  canDrop: 0
+  canDrop: 1
   normalMat: {fileID: 2100000, guid: 19e1ca53d63464048b1f2996a2551e3b, type: 2}
   highlightMat: {fileID: 2100000, guid: dbdd87e75e746d74690a6357aff6c965, type: 2}
 --- !u!65 &8522428476621819868
@@ -156,7 +156,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.20409997, y: 0.078366905, z: 0.19159997}
-  m_Center: {x: -0.030949995, y: 0.034883454, z: -0.0346}
+  m_Center: {x: 0, y: 0.034883454, z: 0.0346}
 --- !u!114 &7332609874181613102
 MonoBehaviour:
   m_ObjectHideFlags: 0
