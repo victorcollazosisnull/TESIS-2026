@@ -4,7 +4,7 @@ public class CuttingStation : MonoBehaviour, IInteractable
 {
     [Header("References")]
     [SerializeField] private PlayerHold playerHold;
-    [SerializeField] private Transform placePoint; 
+    [SerializeField] private Transform placePoint;
 
     private PickupObject currentObject;
 
@@ -19,7 +19,6 @@ public class CuttingStation : MonoBehaviour, IInteractable
             }
 
             PickupObject held = playerHold.GetHeldObject();
-
             Ingredient ingredient = held.GetComponent<Ingredient>();
 
             if (ingredient == null)
@@ -28,20 +27,14 @@ public class CuttingStation : MonoBehaviour, IInteractable
                 return;
             }
 
-            if (ingredient.type == Ingredient.IngredientType.Rice ||
-                ingredient.type == Ingredient.IngredientType.RiceCooked)
+            if (!ingredient.CanBeCut())
             {
-                Debug.Log("El arroz no se puede cortar");
-                return;
-            }
-
-            if (ingredient.isCut)
-            {
-                Debug.Log("Esto ya está cortado");
+                Debug.Log("No se puede cortar");
                 return;
             }
 
             currentObject = held;
+
             held.Lock();
             held.GetComponent<Collider>().enabled = false;
 
@@ -64,37 +57,28 @@ public class CuttingStation : MonoBehaviour, IInteractable
 
             Ingredient ingredient = currentObject.GetComponent<Ingredient>();
 
-            if (ingredient == null)
+            if (ingredient == null) return;
+
+            if (!ingredient.CanBeCut())
             {
-                Debug.Log("No es ingrediente");
+                Debug.Log("No se puede cortar");
                 return;
             }
-
-            if (ingredient.isCut)
-            {
-                Debug.Log("Ya está cortado");
-                return;
-            }
-
-            ingredient.isCut = true;
 
             Vector3 spawnPos = placePoint.position;
             Quaternion spawnRot = placePoint.rotation;
 
             Destroy(currentObject.gameObject);
 
-            if (ingredient.cutPrefab != null)
+            PickupObject cutObj = ingredient.GetCutResult(spawnPos, spawnRot);
+
+            if (cutObj != null)
             {
-                PickupObject cutObj = Instantiate(ingredient.cutPrefab, spawnPos, spawnRot);
-
                 cutObj.SetCanDrop(false);
-
-                cutObj.transform.SetParent(null);
-
                 cutObj.GetComponent<Collider>().enabled = true;
-
-                currentObject = null;
             }
+
+            currentObject = null;
 
             Debug.Log("Ingrediente cortado");
         }

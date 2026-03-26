@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,8 +13,6 @@ public class CookingStation : MonoBehaviour, IInteractable
     [SerializeField] private float cookTime = 3f;
     [SerializeField] private Image fillImage;
     [SerializeField] private GameObject canvasUI;
-
-    [SerializeField] private List<Ingredient.IngredientType> validIngredients;
 
     private float timer = 0f;
     private bool isCooking = false;
@@ -50,9 +47,9 @@ public class CookingStation : MonoBehaviour, IInteractable
                 return;
             }
 
-            if (!validIngredients.Contains(ingredient.type))
+            if (!ingredient.CanBeCooked())
             {
-                Debug.Log("Ingrediente no válido para cocinar");
+                Debug.Log("No se puede cocinar");
                 return;
             }
 
@@ -66,7 +63,7 @@ public class CookingStation : MonoBehaviour, IInteractable
             held.transform.position = placePoint.position;
             held.transform.rotation = placePoint.rotation;
 
-            Debug.Log("Carne colocada en sartén");
+            Debug.Log("Ingrediente colocado en sartén");
             return;
         }
 
@@ -107,26 +104,21 @@ public class CookingStation : MonoBehaviour, IInteractable
 
         if (ingredient == null) return;
 
-        ingredient.isCooked = true;
-
         Vector3 spawnPos = placePoint.position;
         Quaternion spawnRot = placePoint.rotation;
 
-        PickupObject cookedPrefab = ingredient.cookedPrefab;
-
         Destroy(currentObject.gameObject);
 
-        if (cookedPrefab != null)
-        {
-            PickupObject cookedObj = Instantiate(cookedPrefab, spawnPos, spawnRot);
+        PickupObject cookedObj = ingredient.GetCookedResult(spawnPos, spawnRot);
 
+        if (cookedObj != null)
+        {
             cookedObj.SetCanDrop(false);
             cookedObj.GetComponent<Collider>().enabled = true;
-
             cookedObj.Unlock();
-
-            currentObject = null;
         }
+
+        currentObject = null;
 
         fillImage.fillAmount = 0f;
         canvasUI.SetActive(false);

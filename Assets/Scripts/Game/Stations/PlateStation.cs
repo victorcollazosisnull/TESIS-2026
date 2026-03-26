@@ -23,7 +23,7 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         if (ingredient == null) return;
 
-        if (!ingredient.isCut && !ingredient.isCooked)
+        if (!ingredient.IsReadyForPlate())
         {
             Debug.Log("Ingrediente no válido para plato");
             return;
