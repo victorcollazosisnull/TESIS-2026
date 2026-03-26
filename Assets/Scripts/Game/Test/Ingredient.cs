@@ -26,7 +26,10 @@ public class Ingredient : MonoBehaviour
         CarneCut,
 
         CarneCooked,
-        PapaCooked
+        PapaCooked,
+
+        Rice,
+        RiceCooked
     }
 
     public IngredientType type;

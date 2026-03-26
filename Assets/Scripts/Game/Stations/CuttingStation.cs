@@ -22,7 +22,20 @@ public class CuttingStation : MonoBehaviour, IInteractable
 
             Ingredient ingredient = held.GetComponent<Ingredient>();
 
-            if (ingredient != null && ingredient.isCut)
+            if (ingredient == null)
+            {
+                Debug.Log("No es ingrediente");
+                return;
+            }
+
+            if (ingredient.type == Ingredient.IngredientType.Rice ||
+                ingredient.type == Ingredient.IngredientType.RiceCooked)
+            {
+                Debug.Log("El arroz no se puede cortar");
+                return;
+            }
+
+            if (ingredient.isCut)
             {
                 Debug.Log("Esto ya está cortado");
                 return;
