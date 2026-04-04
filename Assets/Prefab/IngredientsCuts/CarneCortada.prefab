@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5181656557440074549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3115567582629445319}
+  - component: {fileID: 4836687127785451176}
+  - component: {fileID: 8675832219772538268}
+  m_Layer: 6
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3115567582629445319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181656557440074549}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2104361023120278261}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!33 &4836687127785451176
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181656557440074549}
+  m_Mesh: {fileID: -5023624866596571984, guid: f8b43258bca564a4bb16d90035ab7a8e, type: 3}
+--- !u!23 &8675832219772538268
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181656557440074549}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 48af46b444da8e2498e19db7218c6f40, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &1927127559166649630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,6 +150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f8b43258bca564a4bb16d90035ab7a8e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f8b43258bca564a4bb16d90035ab7a8e, type: 3}
       propertyPath: m_Name
       value: CarneCortada
@@ -70,7 +164,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: f8b43258bca564a4bb16d90035ab7a8e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3115567582629445319}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f8b43258bca564a4bb16d90035ab7a8e, type: 3}
       insertIndex: -1
@@ -144,12 +241,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f10617fc27ee845b10b93dcaefdf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
-  ingredientName: CarneCut
+  type: 7
   isCut: 1
   isCooked: 0
   cutPrefab: {fileID: 0}
   cookedPrefab: {fileID: 5832006856213088637, guid: b5828fc1b7d7fe3499b09c47eebbe058, type: 3}
-  type: 7
 --- !u!65 &251946616363025919
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -169,5 +265,10 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.4905488, y: 0.66817373, z: 2.9549046}
-  m_Center: {x: 0.00000019128188, y: 0.13430776, z: -1.0148535e-16}
+  m_Size: {x: 3.5132484, y: 2.9444911, z: 0.43159506}
+  m_Center: {x: 0.0010512852, y: -0.015635572, z: 0.0047967043}
+--- !u!4 &2104361023120278261 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f8b43258bca564a4bb16d90035ab7a8e, type: 3}
+  m_PrefabInstance: {fileID: 1927127559166649630}
+  m_PrefabAsset: {fileID: 0}
