@@ -101,27 +101,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b7e9ac3bc36602d42a534cdcea99bfd3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.2563
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7e9ac3bc36602d42a534cdcea99bfd3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.2563
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7e9ac3bc36602d42a534cdcea99bfd3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.2563
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7e9ac3bc36602d42a534cdcea99bfd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.0000000019098
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7e9ac3bc36602d42a534cdcea99bfd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.0064753
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7e9ac3bc36602d42a534cdcea99bfd3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.0049166
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7e9ac3bc36602d42a534cdcea99bfd3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -273,5 +273,5 @@ MonoBehaviour:
   type: 1
   isCut: 0
   isCooked: 0
-  cutPrefab: {fileID: -2944035555462238896, guid: d1748784041bc9945b82c621c83dc539, type: 3}
+  cutPrefab: {fileID: 8558223891384478289, guid: 8ce3c0bd631172741822bf6e1190f075, type: 3}
   cookedPrefab: {fileID: 0}

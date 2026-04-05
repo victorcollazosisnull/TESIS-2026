@@ -268,7 +268,7 @@ MonoBehaviour:
   type: 0
   isCut: 0
   isCooked: 0
-  cutPrefab: {fileID: 8232792263356381893, guid: c4978e0c642573240925358ae2eb4072, type: 3}
+  cutPrefab: {fileID: -461633971915016921, guid: 1b3eece5035c23a4cbf41216508325a7, type: 3}
   cookedPrefab: {fileID: 0}
 --- !u!4 &1019208334966915440 stripped
 Transform:
