@@ -21,7 +21,7 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
-        rend = GetComponent<Renderer>();
+        rend = GetComponentInChildren<Renderer>();
 
         originalColors = new Color[rend.materials.Length];
 
