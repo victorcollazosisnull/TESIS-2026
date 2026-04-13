@@ -55,6 +55,8 @@ public class PlayerInteractor : MonoBehaviour
 
     private void TryInteract()
     {
+        if (!TutorialFlags.canInteract) return;
+
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayer))
@@ -66,6 +68,12 @@ public class PlayerInteractor : MonoBehaviour
             if (interactable != null)
             {
                 interactable.Interact();
+
+                if (TutorialManager.Instance != null && TutorialManager.Instance.GetStep() == 3)
+                {
+                    TutorialManager.Instance.NextStep();
+                }
+
             }
             else
             {

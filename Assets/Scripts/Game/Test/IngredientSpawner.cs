@@ -20,6 +20,11 @@ public class IngredientSpawner : MonoBehaviour, IInteractable
 
         playerHold.PickUp(newIngredient);
 
+        if (TutorialManager.Instance?.GetStep() == 4)
+        {
+            TutorialManager.Instance.NextStep();
+        }
+
         Debug.Log("Agarraste: " + newIngredient.name);
     }
 }
