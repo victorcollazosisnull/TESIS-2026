@@ -207,3 +207,4 @@ MonoBehaviour:
   isCooked: 0
   cutPrefab: {fileID: 0}
   cookedPrefab: {fileID: 0}
+  plateVisualPrefab: {fileID: 7191627676134945134, guid: 1df348e9ae63a6748883c6cfe54e56a8, type: 3}

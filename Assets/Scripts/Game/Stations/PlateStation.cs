@@ -34,6 +34,7 @@ public class PlateStation : MonoBehaviour, IInteractable
             Debug.Log("Ingrediente no válido para plato");
             return;
         }
+
         if (ingredients.Contains(ingredient.type))
         {
             Debug.Log("Ingrediente repetido");
@@ -46,34 +47,25 @@ public class PlateStation : MonoBehaviour, IInteractable
             return;
         }
 
-        held.transform.SetParent(ingredientPoints[currentIndex]);
-        held.transform.localPosition = Vector3.zero;
-        held.transform.localRotation = Quaternion.identity;
+        Transform point = ingredientPoints[currentIndex];
 
-        Rigidbody rb = held.GetComponent<Rigidbody>();
-        Collider col = held.GetComponent<Collider>();
-
-        if (rb != null)
+        if (ingredient.plateVisualPrefab != null)
         {
-            rb.linearVelocity = Vector3.zero; 
-            rb.angularVelocity = Vector3.zero;
-            rb.isKinematic = true;
-            rb.useGravity = false;
+            Instantiate(
+                ingredient.plateVisualPrefab,
+                point.position,
+                point.rotation,
+                point
+            );
         }
 
-        if (col != null)
-        {
-            col.enabled = false; 
-        }
-
-        held.Lock();
-        held.SetCanDrop(false);
+        Destroy(held.gameObject);
 
         ingredients.Add(ingredient.type);
         currentIndex++;
 
         playerHold.Drop();
 
-        Debug.Log("Ingrediente agregado al plato");
+        Debug.Log("Ingrediente agregado al plato (visual)");
     }
 }

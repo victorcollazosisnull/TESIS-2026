@@ -32,6 +32,9 @@ public class Ingredient : MonoBehaviour
     public PickupObject cutPrefab;
     public PickupObject cookedPrefab;
 
+    [Header("Plate Visual")]
+    public GameObject plateVisualPrefab;
+
     public bool CanBeCut()
     {
         return !isCut && cutPrefab != null;

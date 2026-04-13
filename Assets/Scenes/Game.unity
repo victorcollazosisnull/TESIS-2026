@@ -284,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 19132455}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.00439, y: -0.00253, z: 0.00186}
+  m_LocalPosition: {x: -0.00439, y: -0.00253, z: 0.00106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1098,7 +1098,7 @@ Transform:
   m_GameObject: {fileID: 394878634}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.00252, y: 0.00468, z: 0.00186}
+  m_LocalPosition: {x: -0.00252, y: 0.00468, z: 0.00106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1256,7 +1256,7 @@ Transform:
   m_GameObject: {fileID: 410421908}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.016, y: 0, z: 0.024}
+  m_LocalPosition: {x: 0, y: 0.0197, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1459,7 +1459,7 @@ Transform:
   m_GameObject: {fileID: 527337945}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0, z: 0.00186}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2330,7 +2330,7 @@ Transform:
   m_GameObject: {fileID: 867856145}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.00422, y: 0.00155, z: 0.00186}
+  m_LocalPosition: {x: 0.00422, y: 0.00155, z: 0.00106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4381,7 +4381,7 @@ Transform:
   m_GameObject: {fileID: 1678480351}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.00183, y: -0.00492, z: 0.00186}
+  m_LocalPosition: {x: 0.00183, y: -0.00492, z: 0.00106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6661,7 +6661,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 64
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -7724,10 +7724,10 @@ SceneRoots:
   - {fileID: 1338801322}
   - {fileID: 1264451978}
   - {fileID: 1509826665}
-  - {fileID: 1872127031}
   - {fileID: 3453856875984674863}
   - {fileID: 2001178457}
   - {fileID: 682000980}
+  - {fileID: 1872127031}
   - {fileID: 543450652167476539}
   - {fileID: 99713560}
   - {fileID: 1644759115}

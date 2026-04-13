@@ -95,6 +95,7 @@ MonoBehaviour:
   isCooked: 0
   cutPrefab: {fileID: 0}
   cookedPrefab: {fileID: 0}
+  plateVisualPrefab: {fileID: 5133990275439997279, guid: d27a0ed0fc5357b43863c4c0894b4fd6, type: 3}
 --- !u!135 &1438744691706288694
 SphereCollider:
   m_ObjectHideFlags: 0
