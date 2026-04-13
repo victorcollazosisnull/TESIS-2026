@@ -115,7 +115,7 @@ MonoBehaviour:
   isCut: 1
   isCooked: 0
   cutPrefab: {fileID: 0}
-  cookedPrefab: {fileID: 5832006856213088637, guid: b5828fc1b7d7fe3499b09c47eebbe058, type: 3}
+  cookedPrefab: {fileID: -9022765978589682666, guid: fd96e6a2dd1d7de42a1828194f8016ae, type: 3}
 --- !u!1 &3090055225431855908
 GameObject:
   m_ObjectHideFlags: 0
