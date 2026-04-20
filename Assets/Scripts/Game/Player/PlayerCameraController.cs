@@ -20,19 +20,12 @@ public class PlayerCameraController : MonoBehaviour
 
     private void RotateCamera(Vector2 mouseDelta)
     {
-        if (!TutorialFlags.canLook) return;
-
         float mouseX = mouseDelta.x * sensitivity;
         float mouseY = mouseDelta.y * sensitivity;
 
         if (!hasLooked && mouseDelta.magnitude > 0.1f)
         {
             hasLooked = true;
-
-            if (TutorialManager.Instance.GetStep() == 2)
-            {
-                TutorialManager.Instance.NextStep();
-            }
         }
 
         xRotation -= mouseY;

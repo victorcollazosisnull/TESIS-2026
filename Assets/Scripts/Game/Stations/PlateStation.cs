@@ -66,10 +66,6 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         playerHold.Drop();
 
-        if (TutorialManager.Instance?.GetStep() == 9)
-        {
-            TutorialManager.Instance.NextStep();
-        }
 
         Debug.Log("Ingrediente agregado al plato (visual)");
     }

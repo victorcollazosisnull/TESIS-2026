@@ -63,11 +63,6 @@ public class CookingStation : MonoBehaviour, IInteractable
             held.transform.position = placePoint.position;
             held.transform.rotation = placePoint.rotation;
 
-            if (TutorialManager.Instance?.GetStep() == 7)
-            {
-                TutorialManager.Instance.NextStep();
-            }
-
             Debug.Log("Ingrediente colocado en sartén");
             return;
         }
@@ -121,11 +116,6 @@ public class CookingStation : MonoBehaviour, IInteractable
             cookedObj.SetCanDrop(false);
             cookedObj.GetComponent<Collider>().enabled = true;
             cookedObj.Unlock();
-        }
-
-        if (TutorialManager.Instance?.GetStep() == 8)
-        {
-            TutorialManager.Instance.NextStep();
         }
 
         currentObject = null;

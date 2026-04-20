@@ -30,8 +30,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerMove(Vector2 input)
     {
-        if (!TutorialFlags.canMove) return;
-
         move = input;
         isMoving = input.magnitude > 0.1f;
 
@@ -39,10 +37,6 @@ public class PlayerMovement : MonoBehaviour
         {
             hasMoved = true;
 
-            if (TutorialManager.Instance.GetStep() == 1)
-            {
-                TutorialManager.Instance.NextStep();
-            }
         }
     }
 

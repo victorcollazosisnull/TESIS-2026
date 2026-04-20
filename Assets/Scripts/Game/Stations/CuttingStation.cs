@@ -43,11 +43,6 @@ public class CuttingStation : MonoBehaviour, IInteractable
             held.transform.position = placePoint.position;
             held.transform.rotation = placePoint.rotation;
 
-            if (TutorialManager.Instance?.GetStep() == 5)
-            {
-                TutorialManager.Instance.NextStep(); 
-            }
-
             Debug.Log("Objeto colocado en mesa");
             return;
         }
@@ -85,10 +80,6 @@ public class CuttingStation : MonoBehaviour, IInteractable
 
             currentObject = null;
 
-            if (TutorialManager.Instance?.GetStep() == 6)
-            {
-                TutorialManager.Instance.NextStep();
-            }
 
             Debug.Log("Ingrediente cortado");
         }
