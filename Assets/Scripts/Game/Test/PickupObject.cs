@@ -79,17 +79,23 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
 
     public void Highlight()
     {
+        if (rend == null) return;
+
         for (int i = 0; i < rend.materials.Length; i++)
         {
-            rend.materials[i].color = originalColors[i] * 0.6f; 
+            if (rend.materials[i] != null)
+                rend.materials[i].color = originalColors[i] * 0.6f;
         }
     }
 
     public void UnHighlight()
     {
+        if (rend == null) return;
+
         for (int i = 0; i < rend.materials.Length; i++)
         {
-            rend.materials[i].color = originalColors[i];
+            if (rend.materials[i] != null)
+                rend.materials[i].color = originalColors[i];
         }
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static Ingredient;
-
 public class PlateStation : MonoBehaviour, IInteractable
 {
     [Header("References")]
@@ -58,7 +57,7 @@ public class PlateStation : MonoBehaviour, IInteractable
                 point
             );
         }
-
+        held.UnHighlight();
         Destroy(held.gameObject);
 
         ingredients.Add(ingredient.type);
@@ -68,5 +67,14 @@ public class PlateStation : MonoBehaviour, IInteractable
 
 
         Debug.Log("Ingrediente agregado al plato (visual)");
+    }
+    public int GetCurrentCount()
+    {
+        return ingredients.Count;
+    }
+
+    public int GetRequiredCount()
+    {
+        return validIngredients.Count;
     }
 }
