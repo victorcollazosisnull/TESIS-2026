@@ -55,13 +55,29 @@ public class CookingStation : MonoBehaviour, IInteractable
 
             currentObject = held;
 
+            Rigidbody rb = held.GetComponent<Rigidbody>();
+            Collider col = held.GetComponent<Collider>();
+
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.isKinematic = true;
+                rb.useGravity = false;
+            }
+            
+            if (col != null)
+            {
+                col.enabled = false;
+            }
+
             held.Lock();
-            held.GetComponent<Collider>().enabled = false;
 
             playerHold.Drop();
 
             held.transform.position = placePoint.position;
             held.transform.rotation = placePoint.rotation;
+            held.transform.SetParent(placePoint); 
 
             Debug.Log("Ingrediente colocado en sartén");
             return;
@@ -113,8 +129,28 @@ public class CookingStation : MonoBehaviour, IInteractable
 
         if (cookedObj != null)
         {
+            Rigidbody rb = cookedObj.GetComponent<Rigidbody>();
+            Collider col = cookedObj.GetComponent<Collider>();
+
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.isKinematic = true;
+                rb.useGravity = false;
+            }
+
+            if (col != null)
+            {
+                col.enabled = true;
+                col.isTrigger = true;
+            }
+
+            cookedObj.transform.position = placePoint.position;
+            cookedObj.transform.rotation = placePoint.rotation;
+            cookedObj.transform.SetParent(placePoint);
+
             cookedObj.SetCanDrop(false);
-            cookedObj.GetComponent<Collider>().enabled = true;
             cookedObj.Unlock();
         }
 
