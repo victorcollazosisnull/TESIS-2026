@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3581198216045946627}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.000000042758, z: -0.000000071344}
   m_LocalScale: {x: 0.28264084, y: 0.28264084, z: 0.16110528}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1019208334966915440}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2075472992893133617
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   isCooked: 0
   cutPrefab: {fileID: -461633971915016921, guid: 1b3eece5035c23a4cbf41216508325a7, type: 3}
   cookedPrefab: {fileID: 0}
+  plateVisualPrefab: {fileID: 0}
 --- !u!4 &1019208334966915440 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 87f813d4411ef38499eeb4ba4f4a2d04, type: 3}
