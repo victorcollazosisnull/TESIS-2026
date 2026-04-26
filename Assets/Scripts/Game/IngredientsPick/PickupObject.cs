@@ -27,7 +27,10 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
 
         for (int i = 0; i < rend.materials.Length; i++)
         {
-            originalColors[i] = rend.materials[i].color;
+            if (rend.materials[i].HasProperty("_Color"))
+            {
+                originalColors[i] = rend.materials[i].color;
+            }
         }
     }
 
@@ -83,8 +86,10 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
 
         for (int i = 0; i < rend.materials.Length; i++)
         {
-            if (rend.materials[i] != null)
+            if (rend.materials[i].HasProperty("_Color"))
+            {
                 rend.materials[i].color = originalColors[i] * 0.6f;
+            }
         }
     }
 
@@ -94,8 +99,10 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
 
         for (int i = 0; i < rend.materials.Length; i++)
         {
-            if (rend.materials[i] != null)
+            if (rend.materials[i].HasProperty("_Color"))
+            {
                 rend.materials[i].color = originalColors[i];
+            }
         }
     }
 }

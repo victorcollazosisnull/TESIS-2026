@@ -80,7 +80,7 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         Debug.Log("Ingrediente agregado al plato (visual)");
 
-        if (ingredients.Count == validIngredients.Count)
+        if (validIngredients.Count > 0 && ingredients.Count == validIngredients.Count)
         {
             CompleteDish();
         }

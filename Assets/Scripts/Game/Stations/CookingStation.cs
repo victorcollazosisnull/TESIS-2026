@@ -60,12 +60,16 @@ public class CookingStation : MonoBehaviour, IInteractable
 
             if (rb != null)
             {
-                rb.linearVelocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
+                if (!rb.isKinematic)
+                {
+                    rb.linearVelocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                }
+
                 rb.isKinematic = true;
                 rb.useGravity = false;
             }
-            
+
             if (col != null)
             {
                 col.enabled = false;
@@ -134,8 +138,12 @@ public class CookingStation : MonoBehaviour, IInteractable
 
             if (rb != null)
             {
-                rb.linearVelocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
+                if (!rb.isKinematic)
+                {
+                    rb.linearVelocity = Vector3.zero;
+                    rb.angularVelocity = Vector3.zero;
+                }
+
                 rb.isKinematic = true;
                 rb.useGravity = false;
             }
