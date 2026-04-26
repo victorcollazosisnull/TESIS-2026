@@ -1,17 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using static Ingredient;
+
 public class PlateStation : MonoBehaviour, IInteractable
 {
     [Header("References")]
     [SerializeField] private PlayerHold playerHold;
     [SerializeField] private Transform[] ingredientPoints;
+    [SerializeField] private GameObject finalDishObject;
 
     [Header("Ingredients Finals")]
     [SerializeField] private List<IngredientType> validIngredients;
 
+    private List<GameObject> spawnedVisuals = new List<GameObject>();
     private List<IngredientType> ingredients = new List<IngredientType>();
+
     private int currentIndex = 0;
+
+    private void Start()
+    {
+        if (finalDishObject != null)
+            finalDishObject.SetActive(false);
+    }
 
     public void Interact()
     {
@@ -50,13 +60,16 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         if (ingredient.plateVisualPrefab != null)
         {
-            Instantiate(
+            GameObject visual = Instantiate(
                 ingredient.plateVisualPrefab,
                 point.position,
                 point.rotation,
                 point
             );
+
+            spawnedVisuals.Add(visual);
         }
+
         held.UnHighlight();
         Destroy(held.gameObject);
 
@@ -65,9 +78,32 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         playerHold.Drop();
 
-
         Debug.Log("Ingrediente agregado al plato (visual)");
+
+        if (ingredients.Count == validIngredients.Count)
+        {
+            CompleteDish();
+        }
     }
+
+    void CompleteDish()
+    {
+        for (int i = 0; i < spawnedVisuals.Count; i++)
+        {
+            if (spawnedVisuals[i] != null)
+                Destroy(spawnedVisuals[i]);
+        }
+
+        spawnedVisuals.Clear();
+
+        if (finalDishObject != null)
+        {
+            finalDishObject.SetActive(true);
+        }
+
+        Debug.Log("PLATO COMPLETADO");
+    }
+
     public int GetCurrentCount()
     {
         return ingredients.Count;
