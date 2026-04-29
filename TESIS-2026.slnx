@@ -1,4 +1,8 @@
 ﻿<Solution>
   <Project Path="Assembly-CSharp.csproj" />
+<<<<<<< HEAD
+=======
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+>>>>>>> Victor
   <Project Path="Assembly-CSharp-Editor.csproj" />
 </Solution>

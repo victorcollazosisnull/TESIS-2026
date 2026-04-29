@@ -7,6 +7,8 @@ public class PlayerCameraController : MonoBehaviour
 
     private float xRotation = 0f;
 
+    private bool hasLooked = false;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -20,6 +22,11 @@ public class PlayerCameraController : MonoBehaviour
     {
         float mouseX = mouseDelta.x * sensitivity;
         float mouseY = mouseDelta.y * sensitivity;
+
+        if (!hasLooked && mouseDelta.magnitude > 0.1f)
+        {
+            hasLooked = true;
+        }
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); 

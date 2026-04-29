@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isMoving = false;
     private Vector2 move = Vector2.zero;
 
+    private bool hasMoved = false;
+    public bool canControl = true;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,8 +30,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerMove(Vector2 input)
     {
+        if (!canControl) return;
+
         move = input;
         isMoving = input.magnitude > 0.1f;
+
+        if (isMoving && !hasMoved)
+        {
+            hasMoved = true;
+
+        }
     }
 
     private void FixedUpdate()

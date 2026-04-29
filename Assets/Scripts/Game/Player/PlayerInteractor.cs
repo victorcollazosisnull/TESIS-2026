@@ -28,6 +28,11 @@ public class PlayerInteractor : MonoBehaviour
 
     private void CheckHighlight()
     {
+        if (currentHighlight != null && (currentHighlight as MonoBehaviour) == null)
+        {
+            currentHighlight = null;
+        }
+
         Ray ray = new Ray(cam.transform.position, cam.transform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, interactLayer))
@@ -38,7 +43,11 @@ public class PlayerInteractor : MonoBehaviour
             {
                 if (currentHighlight != highlightable)
                 {
-                    currentHighlight?.UnHighlight();
+                    if (currentHighlight != null && (currentHighlight as MonoBehaviour) != null)
+                    {
+                        currentHighlight.UnHighlight();
+                    }
+
                     currentHighlight = highlightable;
                     currentHighlight.Highlight();
                 }
@@ -48,7 +57,11 @@ public class PlayerInteractor : MonoBehaviour
 
         if (currentHighlight != null)
         {
-            currentHighlight.UnHighlight();
+            if ((currentHighlight as MonoBehaviour) != null)
+            {
+                currentHighlight.UnHighlight();
+            }
+
             currentHighlight = null;
         }
     }
@@ -66,12 +79,13 @@ public class PlayerInteractor : MonoBehaviour
             if (interactable != null)
             {
                 interactable.Interact();
+
             }
             else
             {
                 if (playerHold.IsHolding())
                 {
-                    playerHold.Drop();
+                    TryDrop();
                     Debug.Log("Soltaste el objeto");
                 }
             }
@@ -80,9 +94,29 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (playerHold.IsHolding())
             {
-                playerHold.Drop();
+                TryDrop();
                 Debug.Log("Soltaste el objeto");
             }
         }
     }
+
+    private void TryDrop()
+    {
+        if (!playerHold.IsHolding()) return;
+
+        PickupObject held = playerHold.GetHeldObject();
+
+        if (held != null)
+        {
+            if (!held.CanDrop())
+            {
+                Debug.Log("Este objeto no se puede soltar");
+                return;
+            }
+        }
+
+        playerHold.Drop();
+        Debug.Log("Soltaste el objeto");
+    }
+
 }
