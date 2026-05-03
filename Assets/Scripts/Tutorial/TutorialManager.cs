@@ -1,13 +1,13 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private TextMeshProUGUI tutorialText;
+    [SerializeField] private PauseManager pauseManager;
 
     [Header("Tutorial Texts")]
     [TextArea]
@@ -20,9 +20,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private PlateStation plateStation;
     private bool tutorialDone = false;
 
-    [Header("UI")]
-    [SerializeField] private CanvasGroup fadePanel;
-    [SerializeField] private float fadeDuration = 1.5f;
+    [Header("Scene")]
     [SerializeField] private string nextSceneName = "Game";
 
     private void Start()
@@ -32,9 +30,12 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator TutorialFlow()
     {
+        pauseManager.canPause = false;
         playerMovement.canControl = false;
 
-        yield return StartCoroutine(FadeIn());
+        SceneTransitionManager.Instance.FadeOutStart();
+
+        yield return new WaitForSeconds(1f); 
 
         for (int i = 0; i < tutorialMessages.Length; i++)
         {
@@ -43,6 +44,7 @@ public class TutorialManager : MonoBehaviour
         }
 
         playerMovement.canControl = true;
+        pauseManager.canPause = true;
 
         yield return StartCoroutine(WaitForPlateComplete());
 
@@ -52,9 +54,7 @@ public class TutorialManager : MonoBehaviour
         yield return StartCoroutine(TypeText("Prepárate para cocinar..."));
         yield return new WaitForSeconds(1.5f);
 
-        yield return StartCoroutine(FadeOut());
-
-        SceneManager.LoadScene(nextSceneName);
+        SceneTransitionManager.Instance.LoadScene(nextSceneName);
     }
 
     IEnumerator TypeText(string message)
@@ -80,32 +80,5 @@ public class TutorialManager : MonoBehaviour
 
             yield return null;
         }
-    }
-    IEnumerator FadeIn()
-    {
-        float t = 0;
-
-        while (t < fadeDuration)
-        {
-            t += Time.deltaTime;
-            fadePanel.alpha = 1f - (t / fadeDuration);
-            yield return null;
-        }
-
-        fadePanel.alpha = 0f;
-    }
-
-    IEnumerator FadeOut()
-    {
-        float t = 0;
-
-        while (t < fadeDuration)
-        {
-            t += Time.deltaTime;
-            fadePanel.alpha = t / fadeDuration;
-            yield return null;
-        }
-
-        fadePanel.alpha = 1f;
     }
 }

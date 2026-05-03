@@ -6,6 +6,7 @@ public class PlayerInputs : MonoBehaviour
     public static event Action<Vector2> moveInput;
     public static event Action<Vector2> mouseInputAction;
     public static event Action interactInput;
+    public static event Action pauseInput; 
 
     public void ReadMovement(InputAction.CallbackContext context)
     {
@@ -22,6 +23,14 @@ public class PlayerInputs : MonoBehaviour
         if (context.performed) 
         {
             interactInput?.Invoke();
+        }
+    }
+
+    public void ReadPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            pauseInput?.Invoke();
         }
     }
 }
