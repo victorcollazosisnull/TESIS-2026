@@ -660,6 +660,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonManager
   scaleFactor: 1.2
   speed: 10
+  hoverSound: {fileID: 11400000, guid: 849bd44ead0f31d4e827d1f9fe84833e, type: 2}
+  clickSound: {fileID: 11400000, guid: 65812d195694c3742815f029d096dabb, type: 2}
 --- !u!1 &981642617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +1022,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonManager
   scaleFactor: 1.2
   speed: 10
+  hoverSound: {fileID: 11400000, guid: 849bd44ead0f31d4e827d1f9fe84833e, type: 2}
+  clickSound: {fileID: 11400000, guid: 65812d195694c3742815f029d096dabb, type: 2}
 --- !u!1 &1282216164
 GameObject:
   m_ObjectHideFlags: 0

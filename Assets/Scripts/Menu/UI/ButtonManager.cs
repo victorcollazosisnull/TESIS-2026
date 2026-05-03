@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler/*, IPointerClickHandler*/
+public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private Vector3 originalScale;
 
@@ -10,7 +10,8 @@ public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private float speed = 10f;
 
     [Header("Button Sound Data")]
-    //[SerializeField] private SoundData clickSound;
+    [SerializeField] private SoundData hoverSound;
+    [SerializeField] private SoundData clickSound;
 
     private Vector3 targetScale;
 
@@ -22,12 +23,19 @@ public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void Update()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.unscaledDeltaTime * speed);
+        transform.localScale = Vector3.Lerp(
+            transform.localScale,
+            targetScale,
+            Time.unscaledDeltaTime * speed
+        );
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         targetScale = originalScale * scaleFactor;
+
+        if (hoverSound != null)
+            AudioManager.Instance.Play(hoverSound);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -35,8 +43,9 @@ public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         targetScale = originalScale;
     }
 
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-    //    AudioManager.Instance.Play(clickSound);
-    //}
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (clickSound != null)
+            AudioManager.Instance.Play(clickSound);
+    }
 }

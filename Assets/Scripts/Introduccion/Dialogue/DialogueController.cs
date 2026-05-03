@@ -48,15 +48,20 @@ public class DialogueController : MonoBehaviour
 
             isTyping = true;
 
-            foreach (char c in dialogueSO.DialogueLines[i])
+            for (int j = 0; j < dialogueSO.DialogueLines[i].Length; j++)
             {
-                dialogueText.text += c;
+                if (isSkipping)
+                {
+                    dialogueText.text = dialogueSO.DialogueLines[i];
+                    break;
+                }
 
-                if (!isSkipping)
-                    yield return new WaitForSecondsRealtime(typingSpeed);
+                dialogueText.text += dialogueSO.DialogueLines[i][j];
+                yield return new WaitForSecondsRealtime(typingSpeed);
             }
 
             isTyping = false;
+            isSkipping = false;
 
             if (!isSkipping)
                 yield return new WaitForSecondsRealtime(waitAfterLine);
