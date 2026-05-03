@@ -13,5 +13,19 @@ MonoBehaviour:
   m_Name: DialogueSO
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueLines:
-  - aea
-  - calla bajo
+  - "Hace m\xE1s de cien a\xF1os, personas de China llegaron al Per\xFA y trajeron
+    nuevas formas de cocinar."
+  - "Una de ellas era cocinar los alimentos en fuego muy fuerte, mezcl\xE1ndolos
+    r\xE1pidamente."
+  - "Los peruanos combinaron esa t\xE9cnica con sus propios ingredientes."
+  - "As\xED naci\xF3 el Lomo Saltado, un plato que une dos culturas en una sola receta."
+  - Se prepara con carne, papas, cebolla y tomate, combinando sabores deliciosos.
+  - "Hoy es uno de los platos m\xE1s importantes del Per\xFA."
+  - "Representa uni\xF3n, tradici\xF3n y el valor de compartir culturas."
+  dialogueImages:
+  - {fileID: 21300000, guid: 0f25200f473c0664c8815a64f3352c29, type: 3}
+  - {fileID: 21300000, guid: 56f4098e7df205b4793813a74e125cb5, type: 3}
+  - {fileID: 21300000, guid: b3819cdfb414a324e834ce6b6eafaece, type: 3}
+  - {fileID: 21300000, guid: a54bab06f9ebcf54991d86dc0e4b3c34, type: 3}
+  - {fileID: 21300000, guid: f3000b0bbff32b145bd67a53d63c320c, type: 3}
+  imageChangeIndex: 0000000001000000020000000400000005000000

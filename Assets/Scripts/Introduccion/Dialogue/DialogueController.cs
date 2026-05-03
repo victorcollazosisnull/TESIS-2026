@@ -1,15 +1,22 @@
 using TMPro;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {   [Header("Components")]
     [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private Image dialogueImage;
 
     [Header("Settings")]
     [SerializeField] private DialogueSO dialogueSO; 
     [SerializeField] private float typingSpeed;
     [SerializeField] private float waitAfterLine;
+    private bool isSkipping = false;
+    private bool isTyping = false;
+    [SerializeField] private GameObject continueButton;
+
+
     private void Reset()
     {
         typingSpeed = 0.08f;
@@ -17,22 +24,52 @@ public class DialogueController : MonoBehaviour
     }
     void Start()
     {
+        SceneTransitionManager.Instance.FadeOutStart();
+
         StartCoroutine(DialoguesCoroutine());
     }
     private IEnumerator DialoguesCoroutine()
     {
+        int currentImageIndex = 0;
+
         for (int i = 0; i < dialogueSO.DialogueLines.Length; ++i)
         {
             dialogueText.text = "";
 
+            if (dialogueSO.imageChangeIndex != null && currentImageIndex < dialogueSO.imageChangeIndex.Length && i == dialogueSO.imageChangeIndex[currentImageIndex])
+            {
+                if (dialogueSO.dialogueImages != null &&
+                    currentImageIndex < dialogueSO.dialogueImages.Length)
+                {
+                    dialogueImage.sprite = dialogueSO.dialogueImages[currentImageIndex];
+                    currentImageIndex++;
+                }
+            }
+
+            isTyping = true;
+
             foreach (char c in dialogueSO.DialogueLines[i])
             {
                 dialogueText.text += c;
-                yield return new WaitForSecondsRealtime(typingSpeed);
+
+                if (!isSkipping)
+                    yield return new WaitForSecondsRealtime(typingSpeed);
             }
 
-            yield return new WaitForSecondsRealtime(waitAfterLine); 
+            isTyping = false;
+
+            if (!isSkipping)
+                yield return new WaitForSecondsRealtime(waitAfterLine);
         }
 
+        continueButton.SetActive(true);
+    }
+    public void SkipIntro()
+    {
+        isSkipping = true;
+    }
+    public void GoToTutorial()
+    {
+        SceneTransitionManager.Instance.LoadScene("Tutorial");
     }
 }

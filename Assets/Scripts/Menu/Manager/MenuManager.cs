@@ -4,7 +4,7 @@ public class MenuManager : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneTransitionManager.Instance.LoadScene("Introduction");
     }
     public void ExitGame()
     {
