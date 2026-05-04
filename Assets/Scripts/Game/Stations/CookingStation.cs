@@ -6,6 +6,7 @@ public class CookingStation : MonoBehaviour, IInteractable
     [Header("References")]
     [SerializeField] private PlayerHold playerHold;
     [SerializeField] private Transform placePoint;
+    [SerializeField] private ParticleSystem cookingParticles;
 
     private PickupObject currentObject;
 
@@ -20,6 +21,11 @@ public class CookingStation : MonoBehaviour, IInteractable
     private void Start()
     {
         canvasUI.SetActive(false);
+
+        if (cookingParticles != null)
+        {
+            cookingParticles.Stop();
+        }
     }
 
     public void Interact()
@@ -95,6 +101,11 @@ public class CookingStation : MonoBehaviour, IInteractable
             fillImage.fillAmount = 0f;
             canvasUI.SetActive(true);
 
+            if (cookingParticles != null)
+            {
+                cookingParticles.Play();
+            }
+
             Debug.Log("Empezando a cocinar");
         }
     }
@@ -119,6 +130,11 @@ public class CookingStation : MonoBehaviour, IInteractable
     private void FinishCooking()
     {
         isCooking = false;
+
+        if (cookingParticles != null)
+        {
+            cookingParticles.Stop();
+        }
 
         Ingredient ingredient = currentObject.GetComponent<Ingredient>();
 

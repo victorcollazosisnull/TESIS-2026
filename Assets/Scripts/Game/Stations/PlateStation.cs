@@ -8,6 +8,7 @@ public class PlateStation : MonoBehaviour, IInteractable
     [SerializeField] private PlayerHold playerHold;
     [SerializeField] private Transform[] ingredientPoints;
     [SerializeField] private GameObject finalDishObject;
+    [SerializeField] private ParticleSystem completionParticles;
 
     [Header("Ingredients Finals")]
     [SerializeField] private List<IngredientType> validIngredients;
@@ -21,6 +22,11 @@ public class PlateStation : MonoBehaviour, IInteractable
     {
         if (finalDishObject != null)
             finalDishObject.SetActive(false);
+
+        if (completionParticles != null)
+        {
+            completionParticles.Stop();
+        }
     }
 
     public void Interact()
@@ -99,6 +105,11 @@ public class PlateStation : MonoBehaviour, IInteractable
         if (finalDishObject != null)
         {
             finalDishObject.SetActive(true);
+        }
+
+        if (completionParticles != null)
+        {
+            completionParticles.Play(); // PARTICULAS
         }
 
         Debug.Log("PLATO COMPLETADO");
