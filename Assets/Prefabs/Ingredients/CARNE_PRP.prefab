@@ -117,6 +117,8 @@ MonoBehaviour:
   canDrop: 1
   normalMat: {fileID: 2100000, guid: 7eca1e3a42ca908439acade7d678e6c5, type: 2}
   highlightMat: {fileID: 2100000, guid: b2a065a23f2d7544ab6e9f244199dc98, type: 2}
+  highlightColor: {r: 0.4811321, g: 0.07489321, b: 0.07489321, a: 1}
+  intensity: 0.7
 --- !u!1 &1546087923072184356
 GameObject:
   m_ObjectHideFlags: 0

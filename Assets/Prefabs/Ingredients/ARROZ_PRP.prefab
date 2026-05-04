@@ -137,6 +137,8 @@ MonoBehaviour:
   canDrop: 0
   normalMat: {fileID: 2100000, guid: b66d70d4164a000438b0fdc052c4ae4b, type: 2}
   highlightMat: {fileID: 2100000, guid: d6345c8209dab9f43b16a90015f48f18, type: 2}
+  highlightColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 1}
+  intensity: 0.7
 --- !u!114 &8977605782143381647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,12 +151,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f10617fc27ee845b10b93dcaefdf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
-  ingredientName: Rice
+  type: 10
   isCut: 0
   isCooked: 0
   cutPrefab: {fileID: 0}
   cookedPrefab: {fileID: 6741259242975794965, guid: db19f34a24ecc0d4f8aa3d4d2b1713ce, type: 3}
-  type: 10
+  plateVisualPrefab: {fileID: 0}
 --- !u!65 &8014405572391364873
 BoxCollider:
   m_ObjectHideFlags: 0

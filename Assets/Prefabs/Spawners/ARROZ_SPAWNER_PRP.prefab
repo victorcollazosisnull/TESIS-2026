@@ -280,7 +280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867226295844963216}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
   m_Name: 
@@ -288,6 +288,8 @@ MonoBehaviour:
   canDrop: 1
   normalMat: {fileID: 2100000, guid: ca88803a203ad544e8f57b603e483b79, type: 2}
   highlightMat: {fileID: 2100000, guid: d31057f5805f7d54b8e6fa8c625cf7a8, type: 2}
+  highlightColor: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
+  intensity: 0.5
 --- !u!1 &5825806861294131010
 GameObject:
   m_ObjectHideFlags: 0

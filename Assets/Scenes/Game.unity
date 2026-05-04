@@ -3667,6 +3667,8 @@ MonoBehaviour:
   canDrop: 1
   normalMat: {fileID: 2100000, guid: a6e8edf7d7e4f7c45b080b20de5cbfe7, type: 2}
   highlightMat: {fileID: 2100000, guid: 628910bf1892b5a4185a7d05850488e8, type: 2}
+  highlightColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
+  intensity: 0.7
 --- !u!54 &1588646608
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4864,6 +4866,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PauseManager
   panelManager: {fileID: 2636305}
   pausePanelIndex: 0
+  canPause: 1
   playerMovement: {fileID: 1264265035895949804}
 --- !u!4 &1866953256
 Transform:
@@ -6142,7 +6145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5959688194963324016, guid: 083ff5fab79316441b7f08303972a75d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.9800005
+      value: -9.665
       objectReference: {fileID: 0}
     - target: {fileID: 5959688194963324016, guid: 083ff5fab79316441b7f08303972a75d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6207,7 +6210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4160509854293629423, guid: f11110be3fedd47498e3ddf5d0547080, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.59
+      value: -12.56
       objectReference: {fileID: 0}
     - target: {fileID: 4160509854293629423, guid: f11110be3fedd47498e3ddf5d0547080, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6867,7 +6870,7 @@ PrefabInstance:
       objectReference: {fileID: 1892092985}
     - target: {fileID: 1488779853909357595, guid: 30eab1d9d492b4b41b69d68c6b5d1111, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9614298
+      value: -4.039
       objectReference: {fileID: 0}
     - target: {fileID: 1488779853909357595, guid: 30eab1d9d492b4b41b69d68c6b5d1111, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6875,7 +6878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1488779853909357595, guid: 30eab1d9d492b4b41b69d68c6b5d1111, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.858001
+      value: -13.97
       objectReference: {fileID: 0}
     - target: {fileID: 1488779853909357595, guid: 30eab1d9d492b4b41b69d68c6b5d1111, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7249,7 +7252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4478764334711408864, guid: d2600b25ede886645b069404e22b1e87, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.14
+      value: -15.36
       objectReference: {fileID: 0}
     - target: {fileID: 4478764334711408864, guid: d2600b25ede886645b069404e22b1e87, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8082,7 +8085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3851119706289953093, guid: 9a03bba3d44400a4f9d71992142ebfed, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.27
+      value: -11.13
       objectReference: {fileID: 0}
     - target: {fileID: 3851119706289953093, guid: 9a03bba3d44400a4f9d71992142ebfed, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9523,6 +9526,8 @@ MonoBehaviour:
   canDrop: 1
   normalMat: {fileID: 2100000, guid: 9ef85eaea337be04e82f4fa373d65d7c, type: 2}
   highlightMat: {fileID: 2100000, guid: 75abb86348b1d9745aa0b70a48fe6203, type: 2}
+  highlightColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
+  intensity: 0.7
 --- !u!114 &7336551485411408157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10301,6 +10306,8 @@ MonoBehaviour:
   canDrop: 1
   normalMat: {fileID: 2100000, guid: 8507e86f149281442aa5d09878fe5d09, type: 2}
   highlightMat: {fileID: 2100000, guid: b1ad9885dff894444b7b46ea92243008, type: 2}
+  highlightColor: {r: 0.3490566, g: 0.34082413, b: 0.34082413, a: 1}
+  intensity: 1
 --- !u!54 &8637970021602381353
 Rigidbody:
   m_ObjectHideFlags: 0

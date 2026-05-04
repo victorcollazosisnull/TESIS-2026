@@ -99,6 +99,8 @@ MonoBehaviour:
   canDrop: 1
   normalMat: {fileID: 2100000, guid: a79ef42196f17a74697ce031c3f82292, type: 2}
   highlightMat: {fileID: 2100000, guid: 7a697b5d2c1309a4c82924b7f8c0fc65, type: 2}
+  highlightColor: {r: 0.1792453, g: 0.0042274827, b: 0.0042274827, a: 1}
+  intensity: 0.7
 --- !u!114 &7622737697630531673
 MonoBehaviour:
   m_ObjectHideFlags: 0

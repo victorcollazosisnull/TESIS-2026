@@ -13,6 +13,9 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
     [Header("Highlight")]
     [SerializeField] private Material normalMat;
     [SerializeField] private Material highlightMat;
+    [SerializeField] private Color highlightColor = Color.white;
+    [SerializeField] private float intensity = 2f;
+    private Material[] originalMats;
 
     private Renderer rend;
     private Color[] originalColors;
@@ -22,6 +25,8 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         rend = GetComponentInChildren<Renderer>();
+
+        originalMats = rend.materials;
 
         originalColors = new Color[rend.materials.Length];
 
@@ -84,11 +89,12 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
     {
         if (rend == null) return;
 
-        for (int i = 0; i < rend.materials.Length; i++)
+        foreach (Material mat in rend.materials)
         {
-            if (rend.materials[i].HasProperty("_Color"))
+            if (mat.HasProperty("_EmissionColor"))
             {
-                rend.materials[i].color = originalColors[i] * 0.6f;
+                mat.EnableKeyword("_EMISSION");
+                mat.SetColor("_EmissionColor", highlightColor * intensity);
             }
         }
     }
@@ -97,11 +103,11 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
     {
         if (rend == null) return;
 
-        for (int i = 0; i < rend.materials.Length; i++)
+        foreach (Material mat in rend.materials)
         {
-            if (rend.materials[i].HasProperty("_Color"))
+            if (mat.HasProperty("_EmissionColor"))
             {
-                rend.materials[i].color = originalColors[i];
+                mat.SetColor("_EmissionColor", Color.black);
             }
         }
     }
