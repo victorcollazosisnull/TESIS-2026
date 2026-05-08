@@ -11,8 +11,12 @@ public class UIPanelManager : MonoBehaviour
         public Vector3 visiblePosition = Vector3.zero;
 
         [HideInInspector] public bool isVisible;
+        [HideInInspector] public Vector3 originalScale;
+
         public float duration = 0.4f;
-        public Ease ease = Ease.OutBack; 
+        public Ease ease = Ease.OutBack;
+
+        public bool useScaleAnimation = true;
     }
 
     [SerializeField] private PanelData[] panels;
@@ -21,10 +25,21 @@ public class UIPanelManager : MonoBehaviour
     {
         for (int i = 0; i < panels.Length; ++i)
         {
+            panels[i].originalScale = panels[i].panel.localScale;
+
             panels[i].panel.anchoredPosition = panels[i].hiddenPosition;
-            panels[i].panel.localScale = Vector3.zero;
+
+            if (panels[i].useScaleAnimation)
+            {
+                panels[i].panel.localScale = Vector3.zero;
+            }
+            else
+            {
+                panels[i].panel.localScale = panels[i].originalScale;
+            }
+
             panels[i].isVisible = false;
-            panels[i].panel.gameObject.SetActive(false); 
+            panels[i].panel.gameObject.SetActive(false);
         }
     }
 
@@ -40,7 +55,16 @@ public class UIPanelManager : MonoBehaviour
         p.panel.DOKill();
 
         p.panel.DOAnchorPos(p.visiblePosition, p.duration).SetEase(p.ease).SetUpdate(true);
-        p.panel.DOScale(Vector3.one, p.duration).SetEase(p.ease).SetUpdate(true);
+        if (p.useScaleAnimation)
+        {
+            p.panel.DOScale(p.originalScale, p.duration)
+                .SetEase(p.ease)
+                .SetUpdate(true);
+        }
+        else
+        {
+            p.panel.localScale = p.originalScale;
+        }
     }
 
     public void HidePanel(int index)
@@ -52,12 +76,24 @@ public class UIPanelManager : MonoBehaviour
 
         p.panel.DOKill();
 
-        p.panel.DOAnchorPos(p.hiddenPosition, p.duration).SetEase(Ease.InBack).SetUpdate(true);
-        p.panel.DOScale(Vector3.zero, p.duration).SetEase(Ease.InBack).SetUpdate(true)
-               .OnComplete(() => 
-               {
-                   if (!p.isVisible) p.panel.gameObject.SetActive(false);
-               }
-               );
+        p.panel.DOAnchorPos(p.hiddenPosition, p.duration)
+            .SetEase(Ease.InBack)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                if (!p.isVisible)
+                    p.panel.gameObject.SetActive(false);
+            });
+
+        if (p.useScaleAnimation)
+        {
+            p.panel.DOScale(Vector3.zero, p.duration)
+                .SetEase(Ease.InBack)
+                .SetUpdate(true);
+        }
+        else
+        {
+            p.panel.localScale = p.originalScale;
+        }
     }
 }

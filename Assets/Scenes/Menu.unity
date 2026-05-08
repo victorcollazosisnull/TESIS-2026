@@ -1514,14 +1514,18 @@ MonoBehaviour:
     hiddenPosition: {x: 0, y: 0, z: 0}
     visiblePosition: {x: 0, y: 0, z: 0}
     isVisible: 0
+    originalScale: {x: 0, y: 0, z: 0}
     duration: 1
     ease: 9
+    useScaleAnimation: 1
   - panel: {fileID: 878084912}
     hiddenPosition: {x: 0, y: 0, z: 0}
     visiblePosition: {x: 0, y: 0, z: 0}
     isVisible: 0
+    originalScale: {x: 0, y: 0, z: 0}
     duration: 1
     ease: 9
+    useScaleAnimation: 1
 --- !u!4 &299799766
 Transform:
   m_ObjectHideFlags: 0
@@ -3374,7 +3378,7 @@ RectTransform:
   m_GameObject: {fileID: 878084911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.039952714, y: 0.039952714, z: 0.039952714}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 305260853}
@@ -7204,7 +7208,7 @@ RectTransform:
   m_GameObject: {fileID: 2018500971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.039952714, y: 0.039952714, z: 0.039952714}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2116870756}
