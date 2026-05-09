@@ -2973,7 +2973,7 @@ MonoBehaviour:
   typingSpeed: 0.03
   delayBetweenMessages: 1.5
   plateStation: {fileID: 855124734}
-  nextSceneName: Game
+  nextSceneName: Game_LomoSaltado
 --- !u!4 &532054367
 Transform:
   m_ObjectHideFlags: 0
@@ -8416,7 +8416,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -8.45475, y: 0, z: -103.50873, w: -68.48993}
+  m_margin: {x: -8.45475, y: 0, z: -39.73651, w: -172.7329}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

@@ -18,7 +18,21 @@ public class Ingredient : MonoBehaviour
         PapaCooked,
 
         Rice,
-        RiceCooked
+        RiceCooked,
+
+        Pescado,
+        PescadoCut,
+
+        Choclo,
+        ChocloCooked,
+        ChocloCut,
+
+        Limon,
+        LimonCut,
+
+        Camote,
+        CamoteCooked,
+        CamoteCut
     }
 
     [Header("Type")]
