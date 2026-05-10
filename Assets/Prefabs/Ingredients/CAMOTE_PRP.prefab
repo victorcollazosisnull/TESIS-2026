@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f10617fc27ee845b10b93dcaefdf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
-  type: 19
+  type: 20
   isCut: 0
   isCooked: 0
   cutPrefab: {fileID: 0}

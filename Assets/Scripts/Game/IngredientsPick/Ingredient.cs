@@ -47,6 +47,9 @@ public class Ingredient : MonoBehaviour
     public PickupObject cutPrefab;
     public PickupObject cookedPrefab;
 
+    [Header("Visual Rotations")]
+    public Vector3 cuttingRotation;
+
     [Header("Plate Visual")]
     public GameObject plateVisualPrefab;
 
@@ -57,7 +60,8 @@ public class Ingredient : MonoBehaviour
 
     public bool CanBeCooked()
     {
-        return isCut && !isCooked && cookedPrefab != null;
+        //return isCut && !isCooked && cookedPrefab != null;
+        return !isCooked && cookedPrefab != null;
     }
 
     public PickupObject GetCutResult(Vector3 pos, Quaternion rot)

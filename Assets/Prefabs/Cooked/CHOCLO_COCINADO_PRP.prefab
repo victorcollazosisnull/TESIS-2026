@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 26e8a75b840d32941a94ea2feffd622e, type: 2}
+  - {fileID: 2100000, guid: a6341789efb31a344ba1294db5922d16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -152,7 +152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 61626d03bb1da6542a79c27911cd9c3b, type: 3}
       propertyPath: m_Name
-      value: CHOCLO_PRP
+      value: CHOCLO_COCINADO_PRP
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 61626d03bb1da6542a79c27911cd9c3b, type: 3}
       propertyPath: m_Layer
@@ -169,7 +169,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61626d03bb1da6542a79c27911cd9c3b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8161594130072909632}
+      addedObject: {fileID: 4391796286860753555}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 61626d03bb1da6542a79c27911cd9c3b, type: 3}
       insertIndex: -1
       addedObject: {fileID: -7954736637821466103}
@@ -185,7 +185,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 61626d03bb1da6542a79c27911cd9c3b, type: 3}
   m_PrefabInstance: {fileID: 4155694226213241958}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &8161594130072909632
+--- !u!65 &4391796286860753555
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,8 +204,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2523427, y: 0.35055202, z: 0.35372013}
-  m_Center: {x: 0, y: 0.15998599, z: -0.18374625}
+  m_Size: {x: 0.22243625, y: 0.35470727, z: 0.34827957}
+  m_Center: {x: 0.000038594007, y: 0.15718855, z: -0.18322016}
 --- !u!54 &-7954736637821466103
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -246,9 +246,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
   canDrop: 1
-  normalMat: {fileID: 2100000, guid: 26e8a75b840d32941a94ea2feffd622e, type: 2}
-  highlightMat: {fileID: 2100000, guid: 10d3246385f70f043bade3bd6fcb01b0, type: 2}
-  highlightColor: {r: 0.8396226, g: 0.78528035, b: 0.30495724, a: 1}
+  normalMat: {fileID: 2100000, guid: a6341789efb31a344ba1294db5922d16, type: 2}
+  highlightMat: {fileID: 2100000, guid: a6341789efb31a344ba1294db5922d16, type: 2}
+  highlightColor: {r: 0.764151, g: 0.6917963, b: 0.06127627, a: 1}
   intensity: 0.7
 --- !u!114 &-6656352083463400008
 MonoBehaviour:
@@ -262,11 +262,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f10617fc27ee845b10b93dcaefdf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
-  type: 14
+  type: 15
   isCut: 0
-  isCooked: 0
-  cutPrefab: {fileID: 0}
-  cookedPrefab: {fileID: -8642443883639178377, guid: d65cced189a6f904fbf6ed16664aeda1, type: 3}
+  isCooked: 1
+  cutPrefab: {fileID: 4047210061594005356, guid: 654042252ce286743846c3bfe7d2c8e3, type: 3}
+  cookedPrefab: {fileID: 0}
   plateVisualPrefab: {fileID: 0}
 --- !u!4 &4476934945585521549 stripped
 Transform:
