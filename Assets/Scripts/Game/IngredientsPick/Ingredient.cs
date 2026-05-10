@@ -29,6 +29,7 @@ public class Ingredient : MonoBehaviour
 
         Limon,
         LimonCut,
+        LimonJuice,
 
         Camote,
         CamoteCooked,

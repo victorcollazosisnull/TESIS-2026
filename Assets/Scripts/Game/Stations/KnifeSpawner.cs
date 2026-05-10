@@ -18,7 +18,7 @@ public class KnifeSpawner : MonoBehaviour, IInteractable
             return;
         }
 
-        if (playerHold.IsHolding())
+        if (playerHold.IsHolding() || playerHold.HasAnyTool())
         {
             Debug.Log("Tienes las manos ocupadas");
             return;

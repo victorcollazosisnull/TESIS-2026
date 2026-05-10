@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class PlayerHold : MonoBehaviour
+public class PlayerHold : MonoBehaviour 
 {
     [SerializeField] private Transform holdPoint;
     [SerializeField] private GameObject knifeVisual;
+    [SerializeField] private GameObject juiceVisual; 
 
     private PickupObject currentObject;
     private bool hasKnife = false;
+    private bool hasJuicer = false;
     public bool IsHolding()
     {
         return currentObject != null;
@@ -19,7 +21,7 @@ public class PlayerHold : MonoBehaviour
 
     public void PickUp(PickupObject obj)
     {
-        if (hasKnife) return;
+        if (HasAnyTool()) return;
 
         currentObject = obj;
 
@@ -59,5 +61,31 @@ public class PlayerHold : MonoBehaviour
 
         if (knifeVisual != null)
             knifeVisual.SetActive(false);
+    }
+
+    public void TakeJuicer()
+    {
+        hasJuicer = true;
+
+        if (juiceVisual != null)
+            juiceVisual.SetActive(true);
+    }
+
+    public void ReturnJuicer()
+    {
+        hasJuicer = false;
+
+        if (juiceVisual != null)
+            juiceVisual.SetActive(false);
+    }
+
+    public bool HasJuicer()
+    {
+        return hasJuicer;
+    }
+
+    public bool HasAnyTool()
+    {
+        return hasKnife || hasJuicer;
     }
 }
