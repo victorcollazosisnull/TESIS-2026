@@ -43,6 +43,10 @@ public class CuttingStation : MonoBehaviour, IInteractable
             held.transform.position = placePoint.position;
             held.transform.rotation = placePoint.rotation;
 
+            Transform visual = held.transform.GetChild(0);
+
+            visual.localRotation = Quaternion.Euler(ingredient.cuttingRotation);
+
             Debug.Log("Objeto colocado en mesa");
             return;
         }

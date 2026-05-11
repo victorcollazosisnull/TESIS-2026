@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fac2f709f56705a41a73f4c87ea93fc4, type: 3}
-  m_Name: DialogueSO
+  m_Name: DialogueSO_LomoSaltado
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueLines:
   - "Hace m\xE1s de cien a\xF1os, personas de China llegaron al Per\xFA y trajeron

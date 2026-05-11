@@ -200,12 +200,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.22243625, y: 0.35470727, z: 0.34827957}
-  m_Center: {x: 0.000038594007, y: 0.15718855, z: -0.18322016}
+  m_Size: {x: 1.16, y: 1.01, z: 0.56}
+  m_Center: {x: 0.000038594007, y: 0.15718855, z: 0}
 --- !u!54 &-7954736637821466103
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -267,6 +267,7 @@ MonoBehaviour:
   isCooked: 1
   cutPrefab: {fileID: 4047210061594005356, guid: 654042252ce286743846c3bfe7d2c8e3, type: 3}
   cookedPrefab: {fileID: 0}
+  cuttingRotation: {x: 0, y: 0, z: 0}
   plateVisualPrefab: {fileID: 0}
 --- !u!4 &4476934945585521549 stripped
 Transform:

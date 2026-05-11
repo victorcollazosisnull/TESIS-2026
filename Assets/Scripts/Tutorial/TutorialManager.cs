@@ -21,10 +21,13 @@ public class TutorialManager : MonoBehaviour
     private bool tutorialDone = false;
 
     [Header("Scene")]
-    [SerializeField] private string nextSceneName = "Game";
+    [SerializeField] private string nextSceneName = "Menu";
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         StartCoroutine(TutorialFlow());
     }
 
@@ -51,7 +54,7 @@ public class TutorialManager : MonoBehaviour
         yield return StartCoroutine(TypeText("¡Felicidades! Completaste el tutorial"));
         yield return new WaitForSeconds(2f);
 
-        yield return StartCoroutine(TypeText("Prepárate para cocinar..."));
+        yield return StartCoroutine(TypeText("Estas listo mi king..."));
         yield return new WaitForSeconds(1.5f);
 
         SceneTransitionManager.Instance.LoadScene(nextSceneName);

@@ -272,6 +272,7 @@ MonoBehaviour:
   isCooked: 0
   cutPrefab: {fileID: -461633971915016921, guid: 1b3eece5035c23a4cbf41216508325a7, type: 3}
   cookedPrefab: {fileID: 0}
+  cuttingRotation: {x: -90, y: 0, z: 0}
   plateVisualPrefab: {fileID: 0}
 --- !u!4 &1019208334966915440 stripped
 Transform:

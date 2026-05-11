@@ -2973,7 +2973,7 @@ MonoBehaviour:
   typingSpeed: 0.03
   delayBetweenMessages: 1.5
   plateStation: {fileID: 855124734}
-  nextSceneName: Game_LomoSaltado
+  nextSceneName: Menu
 --- !u!4 &532054367
 Transform:
   m_ObjectHideFlags: 0

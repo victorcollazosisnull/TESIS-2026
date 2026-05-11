@@ -9,7 +9,7 @@ public class DialogueController : MonoBehaviour
     [SerializeField] private Image dialogueImage;
 
     [Header("Settings")]
-    [SerializeField] private DialogueSO dialogueSO; 
+    private DialogueSO dialogueSO;
     [SerializeField] private float typingSpeed;
     [SerializeField] private float waitAfterLine;
     private bool isSkipping = false;
@@ -25,6 +25,8 @@ public class DialogueController : MonoBehaviour
     void Start()
     {
         SceneTransitionManager.Instance.FadeOutStart();
+
+        dialogueSO = IntroSelectionData.selectedDialogue;
 
         StartCoroutine(DialoguesCoroutine());
     }
@@ -73,8 +75,8 @@ public class DialogueController : MonoBehaviour
     {
         isSkipping = true;
     }
-    public void GoToTutorial()
+    public void ContinueGame()
     {
-        SceneTransitionManager.Instance.LoadScene("Tutorial");
+        SceneTransitionManager.Instance.LoadScene(IntroSelectionData.nextScene);
     }
 }

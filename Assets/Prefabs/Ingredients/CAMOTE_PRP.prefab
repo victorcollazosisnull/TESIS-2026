@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4597534847444383269}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.19, y: 0.07, z: -0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -208,8 +208,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.32344365, y: 0.17095608, z: 0.18119444}
-  m_Center: {x: 0.16973656, y: -0.0008753687, z: -0.0026816353}
+  m_Size: {x: 0.32317778, y: 0.16577712, z: 0.17134744}
+  m_Center: {x: -0.015612195, y: 0.069157675, z: -0.14692865}
 --- !u!54 &6320726138410833121
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -233,9 +233,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &8474471742804077857
 MonoBehaviour:
@@ -253,7 +253,8 @@ MonoBehaviour:
   isCut: 0
   isCooked: 0
   cutPrefab: {fileID: 0}
-  cookedPrefab: {fileID: 0}
+  cookedPrefab: {fileID: -1240879311432275563, guid: 123121d9c8b9b2940920e16a6a9920d1, type: 3}
+  cuttingRotation: {x: 0, y: 0, z: 0}
   plateVisualPrefab: {fileID: 0}
 --- !u!114 &-1240879311432275563
 MonoBehaviour:
