@@ -54,7 +54,7 @@ public class TutorialManager : MonoBehaviour
         yield return StartCoroutine(TypeText("¡Felicidades! Completaste el tutorial"));
         yield return new WaitForSeconds(2f);
 
-        yield return StartCoroutine(TypeText("Estas listo mi king..."));
+        yield return StartCoroutine(TypeText("Estas listo para cocinar..."));
         yield return new WaitForSeconds(1.5f);
 
         SceneTransitionManager.Instance.LoadScene(nextSceneName);
