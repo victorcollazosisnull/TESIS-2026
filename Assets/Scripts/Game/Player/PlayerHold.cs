@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class PlayerHold : MonoBehaviour 
 {
+    [Header("Items")]
     [SerializeField] private Transform holdPoint;
     [SerializeField] private GameObject knifeVisual;
-    [SerializeField] private GameObject juiceVisual; 
+    [SerializeField] private GameObject juiceVisual;
+
+    [Header("Animations")]
+    [SerializeField] private Animator knifeAnimator;
 
     private PickupObject currentObject;
     private bool hasKnife = false;
@@ -40,6 +44,14 @@ public class PlayerHold : MonoBehaviour
         currentObject.OnDrop();
 
         currentObject = null;
+    }
+
+    public void PlayKnifeAnimation()
+    {
+        if (knifeAnimator != null)
+        {
+            knifeAnimator.SetTrigger("Cut");
+        }
     }
 
     public bool HasKnife()

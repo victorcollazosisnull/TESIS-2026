@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CuttingStation
   playerHold: {fileID: 7566523453615968248, guid: 8510767def5a55544aab4175c2fd17d8, type: 3}
   placePoint: {fileID: 4084184283526475892}
+  cutSound: {fileID: 11400000, guid: fa6c9d36692a397499ad17a65a556745, type: 2}
 --- !u!54 &1198523728054361989
 Rigidbody:
   m_ObjectHideFlags: 0

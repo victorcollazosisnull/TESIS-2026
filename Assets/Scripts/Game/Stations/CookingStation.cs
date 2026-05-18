@@ -15,6 +15,10 @@ public class CookingStation : MonoBehaviour, IInteractable
     [SerializeField] private Image fillImage;
     [SerializeField] private GameObject canvasUI;
 
+    [Header("Sounds")]
+    [SerializeField] private SoundData cookingSound;
+    [SerializeField] private AudioSource cookingAudioSource;
+
     private float timer = 0f;
     private bool isCooking = false;
 
@@ -106,6 +110,14 @@ public class CookingStation : MonoBehaviour, IInteractable
                 cookingParticles.Play();
             }
 
+            if (cookingAudioSource != null && cookingSound != null)
+            {
+                cookingAudioSource.clip = cookingSound.clip;
+                cookingAudioSource.volume = cookingSound.volume;
+                cookingAudioSource.loop = true;
+                cookingAudioSource.Play();
+            }
+
             Debug.Log("Empezando a cocinar");
         }
     }
@@ -134,6 +146,11 @@ public class CookingStation : MonoBehaviour, IInteractable
         if (cookingParticles != null)
         {
             cookingParticles.Stop();
+        }
+
+        if (cookingAudioSource != null)
+        {
+            cookingAudioSource.Stop();
         }
 
         Ingredient ingredient = currentObject.GetComponent<Ingredient>();

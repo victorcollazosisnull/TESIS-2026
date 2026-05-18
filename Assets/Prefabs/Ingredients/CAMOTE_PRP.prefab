@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
-  canDrop: 1
+  canDrop: 0
   normalMat: {fileID: 2100000, guid: 0aeea280a9c772f4b8992cac8942f5e6, type: 2}
   highlightMat: {fileID: 2100000, guid: 13f6f02bd19f0974a96b31dee523d646, type: 2}
   highlightColor: {r: 0.764151, g: 0.082903184, b: 0.42063046, a: 1}

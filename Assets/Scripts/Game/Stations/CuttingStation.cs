@@ -6,6 +6,9 @@ public class CuttingStation : MonoBehaviour, IInteractable
     [SerializeField] private PlayerHold playerHold;
     [SerializeField] private Transform placePoint;
 
+    [Header("Sounds")]
+    [SerializeField] private SoundData cutSound;
+
     private PickupObject currentObject;
 
     public void Interact()
@@ -68,6 +71,9 @@ public class CuttingStation : MonoBehaviour, IInteractable
                 Debug.Log("No se puede cortar");
                 return;
             }
+
+            playerHold.PlayKnifeAnimation(); // ANIMATION
+            AudioManager.Instance.Play(cutSound);
 
             Vector3 spawnPos = placePoint.position;
             Quaternion spawnRot = placePoint.rotation;

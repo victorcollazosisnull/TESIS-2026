@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f18f1a454cea648bd83f6ff5260d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
-  canDrop: 1
+  canDrop: 0
   normalMat: {fileID: 2100000, guid: 26e8a75b840d32941a94ea2feffd622e, type: 2}
   highlightMat: {fileID: 2100000, guid: 10d3246385f70f043bade3bd6fcb01b0, type: 2}
   highlightColor: {r: 0.8396226, g: 0.78528035, b: 0.30495724, a: 1}
@@ -267,6 +267,7 @@ MonoBehaviour:
   isCooked: 0
   cutPrefab: {fileID: 0}
   cookedPrefab: {fileID: -8642443883639178377, guid: d65cced189a6f904fbf6ed16664aeda1, type: 3}
+  cuttingRotation: {x: 0, y: 0, z: 0}
   plateVisualPrefab: {fileID: 0}
 --- !u!4 &4476934945585521549 stripped
 Transform:

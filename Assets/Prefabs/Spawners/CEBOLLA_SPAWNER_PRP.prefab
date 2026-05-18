@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IngredientSpawner
   ingredientPrefab: {fileID: 1052243127831800954, guid: 4d87795c43953d641bfb207307e79010, type: 3}
   playerHold: {fileID: 7566523453615968248, guid: 8510767def5a55544aab4175c2fd17d8, type: 3}
+  pickupSound: {fileID: 11400000, guid: 84aee070cd264714cb78940d80cf9909, type: 2}
 --- !u!114 &9200743414366042752
 MonoBehaviour:
   m_ObjectHideFlags: 0

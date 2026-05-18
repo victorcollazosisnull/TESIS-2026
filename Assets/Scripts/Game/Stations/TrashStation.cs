@@ -4,6 +4,9 @@ public class TrashStation : MonoBehaviour, IInteractable
 {
     [SerializeField] private PlayerHold playerHold;
 
+    [Header("Sounds")]
+    [SerializeField] private SoundData trashSound;
+
     public void Interact()
     {
         if (!playerHold.IsHolding()) return;
@@ -11,6 +14,8 @@ public class TrashStation : MonoBehaviour, IInteractable
         PickupObject held = playerHold.GetHeldObject();
 
         if (held == null) return;
+
+        AudioManager.Instance.Play(trashSound);
 
         Destroy(held.gameObject);
 

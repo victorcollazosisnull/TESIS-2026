@@ -8,6 +8,9 @@ public class IngredientSpawner : MonoBehaviour, IInteractable
     [Header("References")]
     [SerializeField] private PlayerHold playerHold;
 
+    [Header("Sounds")]
+    [SerializeField] private SoundData pickupSound;
+
     public void Interact()
     {
         if (playerHold.IsHolding() || playerHold.HasKnife())
@@ -19,6 +22,8 @@ public class IngredientSpawner : MonoBehaviour, IInteractable
         PickupObject newIngredient = Instantiate(ingredientPrefab);
 
         playerHold.PickUp(newIngredient);
+
+        AudioManager.Instance.Play(pickupSound);
 
         Debug.Log("Agarraste: " + newIngredient.name);
     }
