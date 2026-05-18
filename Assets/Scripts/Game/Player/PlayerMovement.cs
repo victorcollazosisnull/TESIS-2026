@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool hasMoved = false;
     public bool canControl = true;
+
+    [Header("Footsteps")]
+    [SerializeField] private AudioSource footstepsSource;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -47,6 +51,12 @@ public class PlayerMovement : MonoBehaviour
         if (!canControl)
         {
             rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+
+            if (footstepsSource != null && footstepsSource.isPlaying)
+            {
+                footstepsSource.Pause();
+            }
+
             return;
         }
 
@@ -54,5 +64,20 @@ public class PlayerMovement : MonoBehaviour
         Vector3 velocity = moveDir * speed;
 
         rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
+
+        if (isMoving)
+        {
+            if (footstepsSource != null && !footstepsSource.isPlaying)
+            {
+                footstepsSource.Play();
+            }
+        }
+        else
+        {
+            if (footstepsSource != null && footstepsSource.isPlaying)
+            {
+                footstepsSource.Pause();
+            }
+        }
     }
 }
