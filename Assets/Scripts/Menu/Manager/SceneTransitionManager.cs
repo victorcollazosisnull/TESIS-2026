@@ -7,13 +7,26 @@ public class SceneTransitionManager : MonoBehaviour
 
     [SerializeField] private CircleFade circleFade;
 
+    private bool isTransitioning = false;
+
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void LoadScene(string sceneName)
     {
+        if (isTransitioning) return;
+
+        isTransitioning = true;
+
         circleFade.FadeIn(() =>
         {
             SceneManager.LoadScene(sceneName);

@@ -5,16 +5,19 @@ using System.Collections;
 public class CameraSwitcher : MonoBehaviour
 {
     [Header("Camaras")]
-    public CinemachineCamera camMain; 
+    public CinemachineCamera camMain;
     public CinemachineCamera camOptions;
     public CinemachineCamera camCredits;
 
     [Header("Paneles UI")]
     public GameObject panelOptions;
     public GameObject panelCredits;
+    public CanvasGroup mainMenu;
 
     [Header("Settings")]
     public float transitionTime = 1.5f;
+
+    private bool isTransitioning = false;
 
     private void SetActiveCamera(CinemachineCamera targetCam)
     {
@@ -30,24 +33,44 @@ public class CameraSwitcher : MonoBehaviour
 
     public void GoToMenu()
     {
-        SetActiveCamera(camMain);
+        if (isTransitioning) return;
+
+        StartCoroutine(TransitionRoutine(camMain, null));
     }
 
     public void GoToOptions()
     {
-        SetActiveCamera(camOptions);
-        StartCoroutine(ShowPanelDeferred(panelOptions));
+        if (isTransitioning) return;
+
+        StartCoroutine(TransitionRoutine(camOptions, panelOptions));
     }
 
     public void GoToCredits()
     {
-        SetActiveCamera(camCredits);
-        StartCoroutine(ShowPanelDeferred(panelCredits));
+        if (isTransitioning) return;
+
+        StartCoroutine(TransitionRoutine(camCredits, panelCredits));
     }
 
-    private IEnumerator ShowPanelDeferred(GameObject panel)
+    private IEnumerator TransitionRoutine(CinemachineCamera targetCam, GameObject targetPanel)
     {
+        isTransitioning = true;
+
+        mainMenu.interactable = false;
+        mainMenu.blocksRaycasts = false;
+
+        SetActiveCamera(targetCam);
+
         yield return new WaitForSeconds(transitionTime);
-        panel.SetActive(true);
+
+        if (targetPanel != null)
+        {
+            targetPanel.SetActive(true);
+        }
+
+        mainMenu.interactable = true;
+        mainMenu.blocksRaycasts = true;
+
+        isTransitioning = false;
     }
 }

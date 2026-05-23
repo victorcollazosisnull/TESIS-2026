@@ -2,81 +2,131 @@ using TMPro;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.InputSystem;
 public class DialogueController : MonoBehaviour
-{   [Header("Components")]
+{
+    [Header("Components")]
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Image dialogueImage;
 
     [Header("Settings")]
     private DialogueSO dialogueSO;
-    [SerializeField] private float typingSpeed;
-    [SerializeField] private float waitAfterLine;
-    private bool isSkipping = false;
-    private bool isTyping = false;
+
+    [SerializeField] private float typingSpeed = 0.08f;
+
     [SerializeField] private GameObject continueButton;
 
+    private bool isTyping = false;
+    private bool skipLine = false;
+    [SerializeField] private bool dialogueFinished = false;
 
-    private void Reset()
-    {
-        typingSpeed = 0.08f;
-        waitAfterLine = 1.2f;
-    }
-    void Start()
+    private int currentLine = 0;
+    private Coroutine typingCoroutine;
+
+    private void Start()
     {
         SceneTransitionManager.Instance.FadeOutStart();
 
         dialogueSO = IntroSelectionData.selectedDialogue;
 
-        StartCoroutine(DialoguesCoroutine());
+        ShowCurrentImage();
+
+        StartTyping();
     }
-    private IEnumerator DialoguesCoroutine()
+
+    void Update()
     {
-        int currentImageIndex = 0;
+        if (dialogueFinished) return;
 
-        for (int i = 0; i < dialogueSO.DialogueLines.Length; ++i)
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            dialogueText.text = "";
+            HandleDialogueInput();
+        }
+    }
 
-            if (dialogueSO.imageChangeIndex != null && currentImageIndex < dialogueSO.imageChangeIndex.Length && i == dialogueSO.imageChangeIndex[currentImageIndex])
-            {
-                if (dialogueSO.dialogueImages != null &&
-                    currentImageIndex < dialogueSO.dialogueImages.Length)
-                {
-                    dialogueImage.sprite = dialogueSO.dialogueImages[currentImageIndex];
-                    currentImageIndex++;
-                }
-            }
-
-            isTyping = true;
-
-            for (int j = 0; j < dialogueSO.DialogueLines[i].Length; j++)
-            {
-                if (isSkipping)
-                {
-                    dialogueText.text = dialogueSO.DialogueLines[i];
-                    break;
-                }
-
-                dialogueText.text += dialogueSO.DialogueLines[i][j];
-                yield return new WaitForSecondsRealtime(typingSpeed);
-            }
-
-            isTyping = false;
-            isSkipping = false;
-
-            if (!isSkipping)
-                yield return new WaitForSecondsRealtime(waitAfterLine);
+    void HandleDialogueInput()
+    {
+        if (isTyping)
+        {
+            skipLine = true;
+            return;
         }
 
-        continueButton.SetActive(true);
+        currentLine++;
+
+        if (currentLine >= dialogueSO.DialogueLines.Length)
+        {
+            dialogueFinished = true;
+            continueButton.SetActive(true);
+            return;
+        }
+
+        ShowCurrentImage();
+
+        StartTyping();
     }
+
+    void StartTyping()
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+        }
+
+        typingCoroutine = StartCoroutine(TypeLine());
+    }
+
+    IEnumerator TypeLine()
+    {
+        isTyping = true;
+        skipLine = false;
+
+        dialogueText.text = "";
+
+        string line = dialogueSO.DialogueLines[currentLine];
+
+        for (int i = 0; i < line.Length; i++)
+        {
+            if (skipLine)
+            {
+                dialogueText.text = line;
+                break;
+            }
+
+            dialogueText.text += line[i];
+
+            yield return new WaitForSecondsRealtime(typingSpeed);
+        }
+
+        isTyping = false;
+    }
+
+    void ShowCurrentImage()
+    {
+        if (dialogueSO.imageChangeIndex == null) return;
+
+        for (int i = 0; i < dialogueSO.imageChangeIndex.Length; i++)
+        {
+            if (currentLine == dialogueSO.imageChangeIndex[i])
+            {
+                if (i < dialogueSO.dialogueImages.Length)
+                {
+                    dialogueImage.sprite = dialogueSO.dialogueImages[i];
+                }
+            }
+        }
+    }
+
     public void SkipIntro()
     {
-        isSkipping = true;
+        ContinueGame();
     }
+
     public void ContinueGame()
     {
+        //Debug.Log(IntroSelectionData.nextScene);
+        Debug.Log(SceneTransitionManager.Instance);
+
         SceneTransitionManager.Instance.LoadScene(IntroSelectionData.nextScene);
     }
 }

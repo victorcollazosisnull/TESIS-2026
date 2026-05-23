@@ -17,9 +17,11 @@ public class UIPanelManager : MonoBehaviour
         public Ease ease = Ease.OutBack;
 
         public bool useScaleAnimation = true;
+
     }
 
     [SerializeField] private PanelData[] panels;
+    private bool isAnimating = false;
 
     private void Start()
     {
@@ -45,16 +47,28 @@ public class UIPanelManager : MonoBehaviour
 
     public void ShowPanel(int index)
     {
+        if (isAnimating) return;
+
         if (index < 0 || index >= panels.Length) return;
 
+        isAnimating = true;
+
         PanelData p = panels[index];
+
         p.isVisible = true;
 
         p.panel.gameObject.SetActive(true);
 
         p.panel.DOKill();
 
-        p.panel.DOAnchorPos(p.visiblePosition, p.duration).SetEase(p.ease).SetUpdate(true);
+        p.panel.DOAnchorPos(p.visiblePosition, p.duration)
+            .SetEase(p.ease)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                isAnimating = false;
+            });
+
         if (p.useScaleAnimation)
         {
             p.panel.DOScale(p.originalScale, p.duration)
@@ -69,9 +83,14 @@ public class UIPanelManager : MonoBehaviour
 
     public void HidePanel(int index)
     {
+        if (isAnimating) return;
+
         if (index < 0 || index >= panels.Length) return;
 
+        isAnimating = true;
+
         PanelData p = panels[index];
+
         p.isVisible = false;
 
         p.panel.DOKill();
@@ -83,6 +102,8 @@ public class UIPanelManager : MonoBehaviour
             {
                 if (!p.isVisible)
                     p.panel.gameObject.SetActive(false);
+
+                isAnimating = false;
             });
 
         if (p.useScaleAnimation)

@@ -1587,6 +1587,7 @@ MonoBehaviour:
   camCredits: {fileID: 167350014}
   panelOptions: {fileID: 1477064446}
   panelCredits: {fileID: 1771360235}
+  mainMenu: {fileID: 1114560617}
   transitionTime: 1.5
 --- !u!4 &301184344
 Transform:
@@ -5140,6 +5141,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1114560616}
+  - component: {fileID: 1114560617}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -5171,6 +5173,18 @@ RectTransform:
   m_AnchoredPosition: {x: 1128, y: -71}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1114560617
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114560615}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1117427338
 GameObject:
   m_ObjectHideFlags: 0

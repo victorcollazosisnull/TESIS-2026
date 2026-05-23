@@ -3328,6 +3328,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880506054}
   m_CullTransparentMesh: 1
+--- !u!1 &899325766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899325768}
+  - component: {fileID: 899325767}
+  m_Layer: 0
+  m_Name: 'SceneTransitionManager '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &899325767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899325766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d72ae2de7f58f04d852309944fb2553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  circleFade: {fileID: 1948826847}
+--- !u!4 &899325768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899325766}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 891.9043, y: 634.8882, z: -17.59741}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &911730319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6176117485032861293, guid: be1c907d938788c4da926f372db65138, type: 3}
@@ -7402,6 +7447,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4206058410085800474, guid: e2ebfa5339c1ccc44aec7abfc051c325, type: 3}
   m_PrefabInstance: {fileID: 1948826845}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1948826847 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3295417575717723612, guid: e2ebfa5339c1ccc44aec7abfc051c325, type: 3}
+  m_PrefabInstance: {fileID: 1948826845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb30d05679ba08e48b9e281692524a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CircleFade
 --- !u!1 &1949272146
 GameObject:
   m_ObjectHideFlags: 0
@@ -12960,3 +13016,4 @@ SceneRoots:
   - {fileID: 99713560}
   - {fileID: 2069225283}
   - {fileID: 1946116734}
+  - {fileID: 899325768}
