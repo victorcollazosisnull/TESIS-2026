@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class CuttingStation : MonoBehaviour, IInteractable
+public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable
 {
     [Header("References")]
     [SerializeField] private PlayerHold playerHold;
@@ -10,6 +11,13 @@ public class CuttingStation : MonoBehaviour, IInteractable
     [SerializeField] private SoundData cutSound;
 
     private PickupObject currentObject;
+
+    [Header("Highlight")]
+    [SerializeField] private Renderer rend;
+    private bool canHighlight = true;
+
+    [SerializeField] private Color highlightColor = Color.red;
+    [SerializeField] private float intensity = 2f;
 
     public void Interact()
     {
@@ -24,19 +32,18 @@ public class CuttingStation : MonoBehaviour, IInteractable
             PickupObject held = playerHold.GetHeldObject();
             Ingredient ingredient = held.GetComponent<Ingredient>();
 
-            if (ingredient == null)
+            if (ingredient == null || !ingredient.CanBeCut())
             {
-                Debug.Log("No es ingrediente");
-                return;
-            }
-
-            if (!ingredient.CanBeCut())
-            {
-                Debug.Log("No se puede cortar");
+                Debug.Log("No se puede colocar o cortar");
                 return;
             }
 
             currentObject = held;
+
+            currentObject.SetAssignedStation(this);
+
+            canHighlight = true;
+            held.SetHighlight(false);
 
             held.Lock();
             held.GetComponent<Collider>().enabled = false;
@@ -47,7 +54,6 @@ public class CuttingStation : MonoBehaviour, IInteractable
             held.transform.rotation = placePoint.rotation;
 
             Transform visual = held.transform.GetChild(0);
-
             visual.localRotation = Quaternion.Euler(ingredient.cuttingRotation);
 
             Debug.Log("Objeto colocado en mesa");
@@ -63,16 +69,9 @@ public class CuttingStation : MonoBehaviour, IInteractable
             }
 
             Ingredient ingredient = currentObject.GetComponent<Ingredient>();
+            if (ingredient == null || !ingredient.CanBeCut()) return;
 
-            if (ingredient == null) return;
-
-            if (!ingredient.CanBeCut())
-            {
-                Debug.Log("No se puede cortar");
-                return;
-            }
-
-            playerHold.PlayKnifeAnimation(); // ANIMATION
+            playerHold.PlayKnifeAnimation();
             AudioManager.Instance.Play(cutSound);
 
             Vector3 spawnPos = placePoint.position;
@@ -84,14 +83,54 @@ public class CuttingStation : MonoBehaviour, IInteractable
 
             if (cutObj != null)
             {
-                cutObj.SetCanDrop(false);
                 cutObj.GetComponent<Collider>().enabled = true;
+                cutObj.SetCanDrop(false);
+                cutObj.SetHighlight(true);
+
+                cutObj.SetAssignedStation(this);
+
+                currentObject = cutObj;
             }
 
-            currentObject = null;
-
+            canHighlight = false;
+            UnHighlight();
 
             Debug.Log("Ingrediente cortado");
         }
+    }
+
+    public void Highlight()
+    {
+        if (!canHighlight) return;
+        if (rend == null) return;
+
+        foreach (Material mat in rend.materials)
+        {
+            if (mat.HasProperty("_EmissionColor"))
+            {
+                mat.EnableKeyword("_EMISSION");
+                mat.SetColor("_EmissionColor", highlightColor * intensity);
+            }
+        }
+    }
+
+    public void UnHighlight()
+    {
+        if (rend == null) return;
+
+        foreach (Material mat in rend.materials)
+        {
+            if (mat.HasProperty("_EmissionColor"))
+            {
+                mat.SetColor("_EmissionColor", Color.black);
+            }
+        }
+    }
+
+    public void ClearStation()
+    {
+        currentObject = null;
+        canHighlight = true;
+        UnHighlight();
     }
 }

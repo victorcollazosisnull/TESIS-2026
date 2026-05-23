@@ -9,6 +9,7 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
     [Header("Settings Pickup")]
     private bool isLocked = false;
     [SerializeField] private bool canDrop = true;
+    private bool canHighlight = true;
 
     [Header("Highlight")]
     [SerializeField] private Material normalMat;
@@ -20,6 +21,8 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
     private Renderer rend;
     private Color[] originalColors;
 
+    private CuttingStation assignedStation;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -27,7 +30,6 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
         rend = GetComponentInChildren<Renderer>();
 
         originalMats = rend.materials;
-
         originalColors = new Color[rend.materials.Length];
 
         for (int i = 0; i < rend.materials.Length; i++)
@@ -37,6 +39,11 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
                 originalColors[i] = rend.materials[i].color;
             }
         }
+    }
+
+    public void SetAssignedStation(CuttingStation station)
+    {
+        assignedStation = station;
     }
 
     public void OnPickUp()
@@ -82,11 +89,18 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
         if (!playerHold.IsHolding())
         {
             playerHold.PickUp(this);
+
+            if (assignedStation != null)
+            {
+                assignedStation.ClearStation();
+                assignedStation = null; 
+            }
         }
     }
 
     public void Highlight()
     {
+        if (!canHighlight) return;
         if (rend == null) return;
 
         foreach (Material mat in rend.materials)
@@ -109,6 +123,16 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
             {
                 mat.SetColor("_EmissionColor", Color.black);
             }
+        }
+    }
+
+    public void SetHighlight(bool value)
+    {
+        canHighlight = value;
+
+        if (!value)
+        {
+            UnHighlight();
         }
     }
 }
