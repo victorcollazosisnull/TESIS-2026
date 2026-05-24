@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SceneTransitionManager : MonoBehaviour
 {
@@ -35,6 +36,13 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void FadeOutStart()
     {
+        StartCoroutine(FadeOutCoroutine());
+    }
+
+    private IEnumerator FadeOutCoroutine()
+    {
+        yield return null;
+
         circleFade.FadeOut();
     }
 }

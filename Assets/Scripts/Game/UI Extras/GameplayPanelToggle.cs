@@ -8,8 +8,6 @@ public class GameplayPanelToggle : MonoBehaviour
     [Header("Panel Index")]
     [SerializeField] private int panelIndex = 0;
 
-    private bool isOpen = false;
-
     private void OnEnable()
     {
         PlayerInputs.activatePanelInput += TogglePanel;
@@ -24,15 +22,15 @@ public class GameplayPanelToggle : MonoBehaviour
     {
         if (Time.timeScale == 0f) return;
 
-        isOpen = !isOpen;
+        if (panelManager.IsAnimating()) return;
 
-        if (isOpen)
+        if (panelManager.IsPanelVisible(panelIndex))
         {
-            panelManager.ShowPanel(panelIndex);
+            panelManager.HidePanel(panelIndex);
         }
         else
         {
-            panelManager.HidePanel(panelIndex);
+            panelManager.ShowPanel(panelIndex);
         }
     }
 }

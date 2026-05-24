@@ -11,7 +11,8 @@ public class CircleFade : MonoBehaviour
 
     private void Awake()
     {
-        mat = image.material;
+        mat = Instantiate(image.material);
+        image.material = mat;
     }
 
     public void FadeIn(System.Action onComplete = null)
@@ -20,6 +21,7 @@ public class CircleFade : MonoBehaviour
 
         DOTween.To(() => 1f, x => mat.SetFloat("_Radius", x), 0f, duration)
             .SetEase(Ease.InOutQuad)
+            .SetUpdate(true)
             .OnComplete(() => onComplete?.Invoke());
     }
 
@@ -29,6 +31,7 @@ public class CircleFade : MonoBehaviour
 
         DOTween.To(() => 0f, x => mat.SetFloat("_Radius", x), 1f, duration)
             .SetEase(Ease.InOutQuad)
+            .SetUpdate(true)
             .OnComplete(() => onComplete?.Invoke());
     }
 }

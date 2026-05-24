@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHeadBob
   movement: {fileID: 8620819492233591200}
-  bobSpeed: 6
+  bobSpeed: 10
   bobAmount: 0.05
 --- !u!1 &4480864911988175140
 GameObject:
@@ -562,7 +562,7 @@ AudioSource:
   m_Resource: {fileID: 8300000, guid: 02643edfab0d6664280e60609924f972, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.64
   Loop: 0
   Mute: 0
   Spatialize: 0

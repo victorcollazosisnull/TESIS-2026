@@ -19,11 +19,15 @@ public class CookingStation : MonoBehaviour, IInteractable
     [SerializeField] private SoundData cookingSound;
     [SerializeField] private AudioSource cookingAudioSource;
 
+    [Header("UI")]
+    [SerializeField] private GameObject cookText;
+
     private float timer = 0f;
     private bool isCooking = false;
 
     private void Start()
     {
+        cookText.SetActive(false);
         canvasUI.SetActive(false);
 
         if (cookingParticles != null)
@@ -91,7 +95,9 @@ public class CookingStation : MonoBehaviour, IInteractable
 
             held.transform.position = placePoint.position;
             held.transform.rotation = placePoint.rotation;
-            held.transform.SetParent(placePoint); 
+            held.transform.SetParent(placePoint);
+
+            cookText.SetActive(true);
 
             Debug.Log("Ingrediente colocado en sartén");
             return;
@@ -100,6 +106,9 @@ public class CookingStation : MonoBehaviour, IInteractable
         if (currentObject != null)
         {
             isCooking = true;
+
+            cookText.SetActive(false);
+
             timer = cookTime;
 
             fillImage.fillAmount = 0f;

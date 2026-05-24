@@ -62,7 +62,7 @@ public class UIPanelManager : MonoBehaviour
         p.panel.DOKill();
 
         p.panel.DOAnchorPos(p.visiblePosition, p.duration)
-            .SetEase(p.ease)
+            .SetEase(Ease.OutCubic)
             .SetUpdate(true)
             .OnComplete(() =>
             {
@@ -96,7 +96,7 @@ public class UIPanelManager : MonoBehaviour
         p.panel.DOKill();
 
         p.panel.DOAnchorPos(p.hiddenPosition, p.duration)
-            .SetEase(Ease.InBack)
+            .SetEase(Ease.InCubic)
             .SetUpdate(true)
             .OnComplete(() =>
             {
@@ -116,5 +116,16 @@ public class UIPanelManager : MonoBehaviour
         {
             p.panel.localScale = p.originalScale;
         }
+    }
+    public bool IsAnimating()
+    {
+        return isAnimating;
+    }
+
+    public bool IsPanelVisible(int index)
+    {
+        if (index < 0 || index >= panels.Length) return false;
+
+        return panels[index].isVisible;
     }
 }
