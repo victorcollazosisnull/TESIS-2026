@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using static Ingredient;
@@ -18,6 +19,16 @@ public class PlateStation : MonoBehaviour, IInteractable
 
     private int currentIndex = 0;
 
+    [Header("UI")]
+    [SerializeField] private GameObject helpUI;
+
+    [Header("Arrow Animation")]
+    [SerializeField] private float moveAmount = 15f;
+
+    [SerializeField] private float moveSpeed = 0.6f;
+
+    private bool uiVisible = false;
+
     private void Start()
     {
         if (finalDishObject != null)
@@ -27,8 +38,45 @@ public class PlateStation : MonoBehaviour, IInteractable
         {
             completionParticles.Stop();
         }
-    }
 
+        helpUI.SetActive(false);
+
+        helpUI.transform.DOLocalMoveY(
+            helpUI.transform.localPosition.y + moveAmount,
+            moveSpeed)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine);
+    }
+    private void Update()
+    {
+        bool shouldShow = false;
+
+        if (playerHold.IsHolding())
+        {
+            PickupObject held = playerHold.GetHeldObject();
+
+            if (held != null)
+            {
+                Ingredient ingredient = held.GetComponent<Ingredient>();
+
+                if (ingredient != null)
+                {
+                    if (ingredient.IsReadyForPlate() &&
+                        validIngredients.Contains(ingredient.type) &&
+                        !ingredients.Contains(ingredient.type))
+                    {
+                        shouldShow = true;
+                    }
+                }
+            }
+        }
+
+        if (shouldShow != uiVisible)
+        {
+            uiVisible = shouldShow;
+            helpUI.SetActive(shouldShow);
+        }
+    }
     public void Interact()
     {
         if (!playerHold.IsHolding()) return;

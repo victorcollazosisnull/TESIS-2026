@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,11 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
 
     [Header("UI")]
     [SerializeField] private GameObject cookText;
+    [SerializeField] private GameObject helpUI;
+    [Header("Arrow Animation")]
+    [SerializeField] private float moveAmount = 15f;
+    [SerializeField] private float moveSpeed = 0.6f;
+    private bool uiVisible = false;
 
     private float timer = 0f;
     private bool isCooking = false;
@@ -26,6 +32,14 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
     {
         cookText.SetActive(false);
         canvasUI.SetActive(false);
+
+        helpUI.SetActive(false);
+
+        helpUI.transform.DOLocalMoveY(
+        helpUI.transform.localPosition.y + moveAmount,
+        moveSpeed)
+        .SetLoops(-1, LoopType.Yoyo)
+        .SetEase(Ease.InOutSine);
     }
 
     public void Interact()
@@ -99,6 +113,41 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
 
     private void Update()
     {
+        if (!hasRice)
+        {
+            bool shouldShow = false;
+
+            if (playerHold.IsHolding())
+            {
+                PickupObject held = playerHold.GetHeldObject();
+
+                if (held != null)
+                {
+                    Ingredient ingredient = held.GetComponent<Ingredient>();
+
+                    if (ingredient != null &&
+                        ingredient.type == Ingredient.IngredientType.Rice)
+                    {
+                        shouldShow = true;
+                    }
+                }
+            }
+
+            if (shouldShow != uiVisible)
+            {
+                uiVisible = shouldShow;
+                helpUI.SetActive(shouldShow);
+            }
+        }
+        else
+        {
+            if (uiVisible)
+            {
+                uiVisible = false;
+                helpUI.SetActive(false);
+            }
+        }
+
         if (!isCooking) return;
 
         timer -= Time.deltaTime;

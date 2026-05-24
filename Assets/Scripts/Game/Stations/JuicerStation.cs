@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class JuicerStation : MonoBehaviour, IInteractable
@@ -7,6 +8,49 @@ public class JuicerStation : MonoBehaviour, IInteractable
 
     private PickupObject currentObject;
 
+    [Header("UI")]
+    [SerializeField] private GameObject helpUI;
+    [Header("Arrow Animation")]
+    [SerializeField] private float moveAmount = 15f;
+    [SerializeField] private float moveSpeed = 0.6f;
+
+    private void Start()
+    {
+        if (helpUI != null)
+        {
+            helpUI.SetActive(false);
+
+            helpUI.transform.DOLocalMoveY(
+            helpUI.transform.localPosition.y + moveAmount,
+            moveSpeed)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine);
+        }
+    }
+    private void Update()
+    {
+        if (helpUI == null) return;
+
+        bool shouldShow = false;
+
+        if (playerHold.IsHolding() && currentObject == null)
+        {
+            PickupObject held = playerHold.GetHeldObject();
+
+            if (held != null)
+            {
+                Ingredient ingredient = held.GetComponent<Ingredient>();
+
+                if (ingredient != null &&
+                    ingredient.type == Ingredient.IngredientType.LimonCut)
+                {
+                    shouldShow = true;
+                }
+            }
+        }
+
+        helpUI.SetActive(shouldShow);
+    }
     public void Interact()
     {
         if (playerHold.IsHolding())

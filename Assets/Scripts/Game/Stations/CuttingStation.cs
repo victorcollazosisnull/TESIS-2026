@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DG.Tweening;
+using System;
 using UnityEngine;
 
 public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable
@@ -16,9 +17,51 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable
     [SerializeField] private Renderer rend;
     private bool canHighlight = true;
 
+    [Header("Arrow UI")]
+    [SerializeField] private GameObject arrowUI;
+    [Header("Arrow Animation")]
+    [SerializeField] private float moveAmount = 15f;
+    [SerializeField] private float moveSpeed = 0.6f;
+
     [SerializeField] private Color highlightColor = Color.red;
     [SerializeField] private float intensity = 2f;
 
+    public void Start()
+    {
+        if (arrowUI != null)
+        {
+            arrowUI.SetActive(false);
+
+            arrowUI.transform.DOLocalMoveY(
+            arrowUI.transform.localPosition.y + moveAmount,
+            moveSpeed)
+            .SetLoops(-1, LoopType.Yoyo)
+            .SetEase(Ease.InOutSine);
+        }
+    }
+    private void Update()
+    {
+        if (arrowUI == null) return;
+
+        bool shouldShow = false;
+
+        if (playerHold.IsHolding() && currentObject == null)
+        {
+            PickupObject held = playerHold.GetHeldObject();
+
+            if (held != null)
+            {
+                Ingredient ingredient = held.GetComponent<Ingredient>();
+
+                if (ingredient != null && ingredient.CanBeCut())
+                {
+                    shouldShow = true;
+                }
+            }
+        }
+
+        arrowUI.SetActive(shouldShow);
+    }
     public void Interact()
     {
         if (playerHold.IsHolding())
