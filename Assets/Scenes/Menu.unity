@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 6437b17a05e77b640b4cc0749c7678da
+  m_OcclusionCullingData: {fileID: 36300000, guid: f473d5116b6b90a4cbbbc216dc473d9d, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -10977,6 +10977,10 @@ PrefabInstance:
     - target: {fileID: 2994931684900625090, guid: e2ebfa5339c1ccc44aec7abfc051c325, type: 3}
       propertyPath: m_Name
       value: CircleFade
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994931684900625090, guid: e2ebfa5339c1ccc44aec7abfc051c325, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4206058410085800474, guid: e2ebfa5339c1ccc44aec7abfc051c325, type: 3}
       propertyPath: m_Pivot.x

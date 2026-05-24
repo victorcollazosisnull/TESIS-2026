@@ -57,6 +57,7 @@ public class TutorialManager : MonoBehaviour
         yield return StartCoroutine(TypeText("Estas listo para cocinar..."));
         yield return new WaitForSeconds(1.5f);
 
+        pauseManager.canPause = false;
         SceneTransitionManager.Instance.LoadScene(nextSceneName);
     }
 

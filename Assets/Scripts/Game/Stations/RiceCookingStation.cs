@@ -15,12 +15,16 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
     [SerializeField] private PickupObject riceCookedPrefab;
     private bool isCooked = false;
 
+    [Header("UI")]
+    [SerializeField] private GameObject cookText;
+
     private float timer = 0f;
     private bool isCooking = false;
     private bool hasRice = false;
 
     private void Start()
     {
+        cookText.SetActive(false);
         canvasUI.SetActive(false);
     }
 
@@ -60,6 +64,7 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
 
             Destroy(held.gameObject);
             playerHold.Drop();
+            cookText.SetActive(true);
 
             Debug.Log("Arroz colocado en la olla");
             return;
@@ -81,6 +86,7 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
         if (hasRice && !isCooking && !isCooked)
         {
             isCooking = true;
+            cookText.SetActive(false);
             timer = cookTime;
 
             fillImage.fillAmount = 1f;

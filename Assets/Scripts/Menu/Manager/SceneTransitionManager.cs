@@ -28,6 +28,14 @@ public class SceneTransitionManager : MonoBehaviour
 
         isTransitioning = true;
 
+        PauseManager pm = Object.FindFirstObjectByType<PauseManager>();
+        if (pm != null)
+        {
+            pm.canPause = false;
+            // También nos aseguramos de que el juego esté en Play por si acaso
+            Time.timeScale = 1f;
+        }
+
         circleFade.FadeIn(() =>
         {
             SceneManager.LoadScene(sceneName);
