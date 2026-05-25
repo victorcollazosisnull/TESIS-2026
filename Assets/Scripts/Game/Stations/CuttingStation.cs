@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable
+public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, IStation
 {
     [Header("References")]
     [SerializeField] private PlayerHold playerHold;

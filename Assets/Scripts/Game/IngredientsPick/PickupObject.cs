@@ -21,7 +21,7 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
     private Renderer rend;
     private Color[] originalColors;
 
-    private CuttingStation assignedStation;
+    private IStation assignedStation;
 
     private void Awake()
     {
@@ -41,7 +41,7 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
         }
     }
 
-    public void SetAssignedStation(CuttingStation station)
+    public void SetAssignedStation(IStation station)
     {
         assignedStation = station;
     }

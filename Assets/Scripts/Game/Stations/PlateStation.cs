@@ -11,6 +11,9 @@ public class PlateStation : MonoBehaviour, IInteractable
     [SerializeField] private GameObject finalDishObject;
     [SerializeField] private ParticleSystem completionParticles;
 
+    [Header("Sounds")]
+    [SerializeField] private SoundData victorySound; 
+
     [Header("Ingredients Finals")]
     [SerializeField] private List<IngredientType> validIngredients;
 
@@ -159,6 +162,8 @@ public class PlateStation : MonoBehaviour, IInteractable
         {
             completionParticles.Play(); // PARTICULAS
         }
+
+        AudioManager.Instance.Play(victorySound);
 
         Debug.Log("PLATO COMPLETADO");
     }

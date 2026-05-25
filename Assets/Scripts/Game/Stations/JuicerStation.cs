@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class JuicerStation : MonoBehaviour, IInteractable
+public class JuicerStation : MonoBehaviour, IInteractable, IStation
 {
     [SerializeField] private PlayerHold playerHold;
     [SerializeField] private Transform placePoint;
@@ -109,11 +109,17 @@ public class JuicerStation : MonoBehaviour, IInteractable
             {
                 juice.SetCanDrop(false);
                 juice.GetComponent<Collider>().enabled = true;
-            }
 
-            currentObject = null;
+                juice.SetAssignedStation(this);
+
+                currentObject = juice;
+            }
 
             Debug.Log("Jugo preparado");
         }
+    }
+    public void ClearStation()
+    {
+        currentObject = null;
     }
 }

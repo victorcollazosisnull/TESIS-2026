@@ -26,6 +26,8 @@ public class PauseManager : MonoBehaviour
     {
         if (!canPause) return;
 
+        if (panelManager.IsAnimating()) return;
+
         if (isPaused) return;
 
         PauseGame();
