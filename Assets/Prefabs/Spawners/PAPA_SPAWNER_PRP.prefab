@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4408919352815931179}
   - component: {fileID: 3549169079604795347}
   - component: {fileID: 9028883126289270984}
-  - component: {fileID: 8968712810451574490}
   m_Layer: 5
   m_Name: Canvas3DPapa
   m_TagString: Untagged
@@ -103,18 +102,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8968712810451574490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3524502534159993189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9631d82c2d9c0b48a2f0b7b929d000e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasEnemys3DEffect
 --- !u!1 &8279010883631815124
 GameObject:
   m_ObjectHideFlags: 0

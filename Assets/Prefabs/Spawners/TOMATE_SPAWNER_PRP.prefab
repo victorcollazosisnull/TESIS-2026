@@ -326,7 +326,6 @@ GameObject:
   - component: {fileID: 8726901562672703040}
   - component: {fileID: 103932593363242814}
   - component: {fileID: 320252497888833371}
-  - component: {fileID: 4580432961462548209}
   m_Layer: 5
   m_Name: Canvas3DTomate
   m_TagString: Untagged
@@ -417,15 +416,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4580432961462548209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387917560253659762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9631d82c2d9c0b48a2f0b7b929d000e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasEnemys3DEffect

@@ -327,7 +327,6 @@ GameObject:
   - component: {fileID: 6128753829933940659}
   - component: {fileID: 4195839387911414709}
   - component: {fileID: 7138593927054549484}
-  - component: {fileID: 4603023460497745393}
   m_Layer: 5
   m_Name: Canvas3DCarne
   m_TagString: Untagged
@@ -418,15 +417,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4603023460497745393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7859618678902774714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9631d82c2d9c0b48a2f0b7b929d000e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CanvasEnemys3DEffect
