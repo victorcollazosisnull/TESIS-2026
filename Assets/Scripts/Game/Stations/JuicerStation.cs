@@ -1,12 +1,18 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class JuicerStation : MonoBehaviour, IInteractable, IStation
+public class JuicerStation : MonoBehaviour, IInteractable, IHighlightable, IStation
 {
     [SerializeField] private PlayerHold playerHold;
     [SerializeField] private Transform placePoint;
 
     private PickupObject currentObject;
+
+    [Header("Highlight")]
+    [SerializeField] private Renderer rend;
+    [SerializeField] private Color highlightColor = Color.yellow;
+    [SerializeField] private float intensity = 2f;
+    private bool canHighlight = true;
 
     [Header("UI")]
     [SerializeField] private GameObject helpUI;
@@ -27,6 +33,7 @@ public class JuicerStation : MonoBehaviour, IInteractable, IStation
             .SetEase(Ease.InOutSine);
         }
     }
+
     private void Update()
     {
         if (helpUI == null) return;
@@ -51,6 +58,7 @@ public class JuicerStation : MonoBehaviour, IInteractable, IStation
 
         helpUI.SetActive(shouldShow);
     }
+
     public void Interact()
     {
         if (playerHold.IsHolding())
@@ -73,6 +81,9 @@ public class JuicerStation : MonoBehaviour, IInteractable, IStation
 
             currentObject = held;
 
+            canHighlight = true;
+            held.SetHighlight(false);
+
             held.Lock();
             held.GetComponent<Collider>().enabled = false;
 
@@ -82,7 +93,6 @@ public class JuicerStation : MonoBehaviour, IInteractable, IStation
             held.transform.rotation = placePoint.rotation;
 
             Debug.Log("Limon colocado");
-
             return;
         }
 
@@ -94,32 +104,62 @@ public class JuicerStation : MonoBehaviour, IInteractable, IStation
                 return;
             }
 
-            Ingredient ingredient =
-                currentObject.GetComponent<Ingredient>();
+            Ingredient ingredient = currentObject.GetComponent<Ingredient>();
 
             Vector3 spawnPos = placePoint.position;
             Quaternion spawnRot = placePoint.rotation;
 
             Destroy(currentObject.gameObject);
 
-            PickupObject juice =
-                ingredient.GetCookedResult(spawnPos, spawnRot);
+            PickupObject juice = ingredient.GetCookedResult(spawnPos, spawnRot);
 
             if (juice != null)
             {
                 juice.SetCanDrop(false);
                 juice.GetComponent<Collider>().enabled = true;
-
+                juice.SetHighlight(true);
                 juice.SetAssignedStation(this);
-
                 currentObject = juice;
             }
+
+            canHighlight = false;
+            UnHighlight();
 
             Debug.Log("Jugo preparado");
         }
     }
+
+    public void Highlight()
+    {
+        if (!canHighlight) return;
+        if (rend == null) return;
+
+        foreach (Material mat in rend.materials)
+        {
+            if (mat.HasProperty("_EmissionColor"))
+            {
+                mat.EnableKeyword("_EMISSION");
+                mat.SetColor("_EmissionColor", highlightColor * intensity);
+            }
+        }
+    }
+
+    public void UnHighlight()
+    {
+        if (rend == null) return;
+
+        foreach (Material mat in rend.materials)
+        {
+            if (mat.HasProperty("_EmissionColor"))
+            {
+                mat.SetColor("_EmissionColor", Color.black);
+            }
+        }
+    }
+
     public void ClearStation()
     {
         currentObject = null;
+        canHighlight = true;
     }
 }

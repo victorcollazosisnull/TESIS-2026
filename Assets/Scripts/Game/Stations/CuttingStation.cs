@@ -174,6 +174,5 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
     {
         currentObject = null;
         canHighlight = true;
-        UnHighlight();
     }
 }

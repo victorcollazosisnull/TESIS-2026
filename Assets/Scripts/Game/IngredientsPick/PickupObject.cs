@@ -86,14 +86,14 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
 
         PlayerHold playerHold = FindAnyObjectByType<PlayerHold>();
 
-        if (!playerHold.IsHolding())
+        if (!playerHold.IsHolding() && !playerHold.HasAnyTool())
         {
             playerHold.PickUp(this);
 
             if (assignedStation != null)
             {
                 assignedStation.ClearStation();
-                assignedStation = null; 
+                assignedStation = null;
             }
         }
     }

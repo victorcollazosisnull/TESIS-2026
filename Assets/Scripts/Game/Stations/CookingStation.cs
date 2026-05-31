@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,8 +23,22 @@ public class CookingStation : MonoBehaviour, IInteractable
     [Header("UI")]
     [SerializeField] private GameObject cookText;
 
+    [Header("Arrow UI")]
+    [SerializeField] private GameObject arrowUI;
+    [Header("Arrow Animation")]
+    [SerializeField] private float moveAmount = 15f;
+    [SerializeField] private float moveSpeed = 0.6f;
+
     private float timer = 0f;
     private bool isCooking = false;
+
+    private static readonly Ingredient.IngredientType[] acceptedTypes = new[]
+    {
+        Ingredient.IngredientType.PapaCut,
+        Ingredient.IngredientType.CarneCut,
+        Ingredient.IngredientType.Choclo,
+        Ingredient.IngredientType.Camote,
+    };
 
     private void Start()
     {
@@ -31,9 +46,61 @@ public class CookingStation : MonoBehaviour, IInteractable
         canvasUI.SetActive(false);
 
         if (cookingParticles != null)
-        {
             cookingParticles.Stop();
+
+        if (arrowUI != null)
+        {
+            arrowUI.SetActive(false);
+
+            arrowUI.transform.DOLocalMoveY(
+                arrowUI.transform.localPosition.y + moveAmount,
+                moveSpeed)
+                .SetLoops(-1, DG.Tweening.LoopType.Yoyo)
+                .SetEase(DG.Tweening.Ease.InOutSine);
         }
+    }
+
+    private void Update()
+    {
+        UpdateArrowUI();
+
+        if (!isCooking) return;
+
+        timer -= Time.deltaTime;
+
+        float progress = timer / cookTime;
+        fillImage.fillAmount = progress;
+        fillImage.color = Color.Lerp(Color.red, Color.green, progress);
+
+        if (timer <= 0f)
+            FinishCooking();
+    }
+
+    private void UpdateArrowUI()
+    {
+        if (arrowUI == null) return;
+
+        bool shouldShow = false;
+
+        if (!isCooking && currentObject == null && playerHold.IsHolding())
+        {
+            PickupObject held = playerHold.GetHeldObject();
+            if (held != null)
+            {
+                Ingredient ingredient = held.GetComponent<Ingredient>();
+                if (ingredient != null && ingredient.CanBeCooked() && IsAccepted(ingredient.type))
+                    shouldShow = true;
+            }
+        }
+
+        arrowUI.SetActive(shouldShow);
+    }
+
+    private bool IsAccepted(Ingredient.IngredientType type)
+    {
+        foreach (var t in acceptedTypes)
+            if (t == type) return true;
+        return false;
     }
 
     public void Interact()
@@ -79,18 +146,14 @@ public class CookingStation : MonoBehaviour, IInteractable
                     rb.linearVelocity = Vector3.zero;
                     rb.angularVelocity = Vector3.zero;
                 }
-
                 rb.isKinematic = true;
                 rb.useGravity = false;
             }
 
             if (col != null)
-            {
                 col.enabled = false;
-            }
 
             held.Lock();
-
             playerHold.Drop();
 
             held.transform.position = placePoint.position;
@@ -106,18 +169,13 @@ public class CookingStation : MonoBehaviour, IInteractable
         if (currentObject != null)
         {
             isCooking = true;
-
             cookText.SetActive(false);
-
             timer = cookTime;
-
             fillImage.fillAmount = 0f;
             canvasUI.SetActive(true);
 
             if (cookingParticles != null)
-            {
                 cookingParticles.Play();
-            }
 
             if (cookingAudioSource != null && cookingSound != null)
             {
@@ -131,39 +189,17 @@ public class CookingStation : MonoBehaviour, IInteractable
         }
     }
 
-    private void Update()
-    {
-        if (!isCooking) return;
-
-        timer -= Time.deltaTime;
-
-        float progress = timer / cookTime;
-        fillImage.fillAmount = progress;
-
-        fillImage.color = Color.Lerp(Color.red, Color.green, progress);
-
-        if (timer <= 0f)
-        {
-            FinishCooking();
-        }
-    }
-
     private void FinishCooking()
     {
         isCooking = false;
 
         if (cookingParticles != null)
-        {
             cookingParticles.Stop();
-        }
 
         if (cookingAudioSource != null)
-        {
             cookingAudioSource.Stop();
-        }
 
         Ingredient ingredient = currentObject.GetComponent<Ingredient>();
-
         if (ingredient == null) return;
 
         Vector3 spawnPos = placePoint.position;
@@ -185,7 +221,6 @@ public class CookingStation : MonoBehaviour, IInteractable
                     rb.linearVelocity = Vector3.zero;
                     rb.angularVelocity = Vector3.zero;
                 }
-
                 rb.isKinematic = true;
                 rb.useGravity = false;
             }
@@ -205,7 +240,6 @@ public class CookingStation : MonoBehaviour, IInteractable
         }
 
         currentObject = null;
-
         fillImage.fillAmount = 0f;
         canvasUI.SetActive(false);
 
