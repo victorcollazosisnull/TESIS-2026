@@ -5959,7 +5959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5829dee970b5b4aa5eeeda1b2288b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneMusicPlayer
-  sceneMusic: {fileID: 11400000, guid: 0868259e962dcdf4c8c21e39c3cb19b5, type: 2}
+  sceneMusic: {fileID: 11400000, guid: 937e35cf0bcbe0c47971c9f4f5171333, type: 2}
 --- !u!4 &786348020
 Transform:
   m_ObjectHideFlags: 0
@@ -6857,6 +6857,8 @@ MonoBehaviour:
   rend: {fileID: 1993024164}
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   intensity: 2
+  placeSound: {fileID: 11400000, guid: 84aee070cd264714cb78940d80cf9909, type: 2}
+  pickupSound: {fileID: 11400000, guid: c98923ccff97a984186eebae8944c70a, type: 2}
   helpUI: {fileID: 852803143}
   moveAmount: 15
   moveSpeed: 0.6
@@ -21157,6 +21159,7 @@ MonoBehaviour:
   - {fileID: 527337946}
   finalDishObject: {fileID: 1126804504}
   completionParticles: {fileID: 718949902}
+  placeSound: {fileID: 11400000, guid: 9ad51bf971cbf994c85f0055ed69f10c, type: 2}
   victorySound: {fileID: 11400000, guid: eab69440b08dba444b02a8c6294ddc31, type: 2}
   validIngredients: 0d00000005000000160000001000000013000000
   helpUI: {fileID: 17957235}

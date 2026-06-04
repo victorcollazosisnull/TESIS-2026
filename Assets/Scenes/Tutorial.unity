@@ -4643,7 +4643,7 @@ MonoBehaviour:
   - '"USA WASD PARA MOVERTE Y EL MOUSE PARA MIRAR"'
   - '"PRESIONA E PARA AGARRAR, COLOCAR, PICAR Y COCINAR INGREDIENTES"'
   - '"PRESIONA Q PARA VER LAS INSTRUCCIONES"'
-  - '"SOLO PUEDES LLEVAR 1 OBJETO A LA VEZ EN TU MANO"'
+  - '"SOLO PUEDES LLEVAR UN OBJETO A LA VEZ EN TU MANO"'
   - '"MISION : PREPARA PAPAS FRITAS"
 
     EMPEZEMOS!'
@@ -7619,6 +7619,7 @@ MonoBehaviour:
   - {fileID: 9746409}
   finalDishObject: {fileID: 8491325119789812959}
   completionParticles: {fileID: 18630868}
+  placeSound: {fileID: 11400000, guid: 9ad51bf971cbf994c85f0055ed69f10c, type: 2}
   victorySound: {fileID: 11400000, guid: eab69440b08dba444b02a8c6294ddc31, type: 2}
   validIngredients: 09000000
   helpUI: {fileID: 2069417084}
@@ -16778,7 +16779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5829dee970b5b4aa5eeeda1b2288b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneMusicPlayer
-  sceneMusic: {fileID: 11400000, guid: 0868259e962dcdf4c8c21e39c3cb19b5, type: 2}
+  sceneMusic: {fileID: 11400000, guid: 937e35cf0bcbe0c47971c9f4f5171333, type: 2}
 --- !u!4 &2049151339
 Transform:
   m_ObjectHideFlags: 0

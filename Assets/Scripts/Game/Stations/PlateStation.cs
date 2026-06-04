@@ -12,7 +12,8 @@ public class PlateStation : MonoBehaviour, IInteractable
     [SerializeField] private ParticleSystem completionParticles;
 
     [Header("Sounds")]
-    [SerializeField] private SoundData victorySound; 
+    [SerializeField] private SoundData placeSound;
+    [SerializeField] private SoundData victorySound;
 
     [Header("Ingredients Finals")]
     [SerializeField] private List<IngredientType> validIngredients;
@@ -27,7 +28,6 @@ public class PlateStation : MonoBehaviour, IInteractable
 
     [Header("Arrow Animation")]
     [SerializeField] private float moveAmount = 15f;
-
     [SerializeField] private float moveSpeed = 0.6f;
 
     private bool uiVisible = false;
@@ -38,9 +38,7 @@ public class PlateStation : MonoBehaviour, IInteractable
             finalDishObject.SetActive(false);
 
         if (completionParticles != null)
-        {
             completionParticles.Stop();
-        }
 
         helpUI.SetActive(false);
 
@@ -50,6 +48,7 @@ public class PlateStation : MonoBehaviour, IInteractable
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.InOutSine);
     }
+
     private void Update()
     {
         bool shouldShow = false;
@@ -62,14 +61,12 @@ public class PlateStation : MonoBehaviour, IInteractable
             {
                 Ingredient ingredient = held.GetComponent<Ingredient>();
 
-                if (ingredient != null)
+                if (ingredient != null &&
+                    ingredient.IsReadyForPlate() &&
+                    validIngredients.Contains(ingredient.type) &&
+                    !ingredients.Contains(ingredient.type))
                 {
-                    if (ingredient.IsReadyForPlate() &&
-                        validIngredients.Contains(ingredient.type) &&
-                        !ingredients.Contains(ingredient.type))
-                    {
-                        shouldShow = true;
-                    }
+                    shouldShow = true;
                 }
             }
         }
@@ -80,6 +77,7 @@ public class PlateStation : MonoBehaviour, IInteractable
             helpUI.SetActive(shouldShow);
         }
     }
+
     public void Interact()
     {
         if (!playerHold.IsHolding()) return;
@@ -137,9 +135,15 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         Debug.Log("Ingrediente agregado al plato (visual)");
 
-        if (validIngredients.Count > 0 && ingredients.Count == validIngredients.Count)
+        bool isLastIngredient = ingredients.Count == validIngredients.Count;
+
+        if (isLastIngredient)
         {
-            CompleteDish();
+            CompleteDish(); 
+        }
+        else
+        {
+            AudioManager.Instance.Play(placeSound);
         }
     }
 
@@ -154,27 +158,16 @@ public class PlateStation : MonoBehaviour, IInteractable
         spawnedVisuals.Clear();
 
         if (finalDishObject != null)
-        {
             finalDishObject.SetActive(true);
-        }
 
         if (completionParticles != null)
-        {
-            completionParticles.Play(); // PARTICULAS
-        }
+            completionParticles.Play();
 
         AudioManager.Instance.Play(victorySound);
 
         Debug.Log("PLATO COMPLETADO");
     }
 
-    public int GetCurrentCount()
-    {
-        return ingredients.Count;
-    }
-
-    public int GetRequiredCount()
-    {
-        return validIngredients.Count;
-    }
+    public int GetCurrentCount() => ingredients.Count;
+    public int GetRequiredCount() => validIngredients.Count;
 }

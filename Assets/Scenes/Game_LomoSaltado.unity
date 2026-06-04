@@ -7378,7 +7378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5829dee970b5b4aa5eeeda1b2288b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneMusicPlayer
-  sceneMusic: {fileID: 11400000, guid: 0868259e962dcdf4c8c21e39c3cb19b5, type: 2}
+  sceneMusic: {fileID: 11400000, guid: 937e35cf0bcbe0c47971c9f4f5171333, type: 2}
 --- !u!4 &1078518646
 Transform:
   m_ObjectHideFlags: 0
@@ -17848,6 +17848,7 @@ MonoBehaviour:
   fillImage: {fileID: 1904499134}
   canvasUI: {fileID: 106594945}
   riceCookedPrefab: {fileID: 6741259242975794965, guid: db19f34a24ecc0d4f8aa3d4d2b1713ce, type: 3}
+  cookedSound: {fileID: 11400000, guid: ce5d4491debf4e04f8d95e7188df039d, type: 2}
   cookText: {fileID: 1951974627}
   helpUI: {fileID: 1526902257}
   moveAmount: 15
@@ -18680,6 +18681,7 @@ MonoBehaviour:
   - {fileID: 527337946}
   finalDishObject: {fileID: 1653649191785136561}
   completionParticles: {fileID: 718949902}
+  placeSound: {fileID: 11400000, guid: 9ad51bf971cbf994c85f0055ed69f10c, type: 2}
   victorySound: {fileID: 11400000, guid: eab69440b08dba444b02a8c6294ddc31, type: 2}
   validIngredients: 040000000500000008000000090000000b000000
   helpUI: {fileID: 399791665}

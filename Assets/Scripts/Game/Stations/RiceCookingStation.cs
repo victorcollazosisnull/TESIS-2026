@@ -16,6 +16,9 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
     [SerializeField] private PickupObject riceCookedPrefab;
     private bool isCooked = false;
 
+    [Header("Sounds")]
+    [SerializeField] private SoundData cookedSound;
+
     [Header("UI")]
     [SerializeField] private GameObject cookText;
     [SerializeField] private GameObject helpUI;
@@ -74,7 +77,7 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
             }
 
             hasRice = true;
-            isCooked = false; 
+            isCooked = false;
 
             Destroy(held.gameObject);
             playerHold.Drop();
@@ -158,9 +161,7 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
         fillImage.color = Color.Lerp(Color.green, Color.red, 1f - progress);
 
         if (timer <= 0f)
-        {
             FinishCooking();
-        }
     }
 
     private void FinishCooking()
@@ -170,6 +171,8 @@ public class RiceCookingStation : MonoBehaviour, IInteractable
 
         fillImage.fillAmount = 0f;
         canvasUI.SetActive(false);
+
+        AudioManager.Instance.Play(cookedSound);
 
         Debug.Log("Arroz listo");
     }

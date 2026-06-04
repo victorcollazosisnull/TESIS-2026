@@ -14,6 +14,10 @@ public class JuicerStation : MonoBehaviour, IInteractable, IHighlightable, IStat
     [SerializeField] private float intensity = 2f;
     private bool canHighlight = true;
 
+    [Header("Sounds")]
+    [SerializeField] private SoundData placeSound;
+    [SerializeField] private SoundData pickupSound;
+
     [Header("UI")]
     [SerializeField] private GameObject helpUI;
     [Header("Arrow Animation")]
@@ -67,7 +71,6 @@ public class JuicerStation : MonoBehaviour, IInteractable, IHighlightable, IStat
                 return;
 
             PickupObject held = playerHold.GetHeldObject();
-
             Ingredient ingredient = held.GetComponent<Ingredient>();
 
             if (ingredient == null)
@@ -91,6 +94,8 @@ public class JuicerStation : MonoBehaviour, IInteractable, IHighlightable, IStat
 
             held.transform.position = placePoint.position;
             held.transform.rotation = placePoint.rotation;
+
+            AudioManager.Instance.Play(placeSound);
 
             Debug.Log("Limon colocado");
             return;
@@ -151,9 +156,7 @@ public class JuicerStation : MonoBehaviour, IInteractable, IHighlightable, IStat
         foreach (Material mat in rend.materials)
         {
             if (mat.HasProperty("_EmissionColor"))
-            {
                 mat.SetColor("_EmissionColor", Color.black);
-            }
         }
     }
 
@@ -161,5 +164,7 @@ public class JuicerStation : MonoBehaviour, IInteractable, IHighlightable, IStat
     {
         currentObject = null;
         canHighlight = true;
+
+        AudioManager.Instance.Play(pickupSound);
     }
 }

@@ -886,6 +886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe0d03fbcd5fb74cad2dc6a9d7a96bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCameraController
-  sensitivity: 0.2
+  sensitivity: 0.1
   playerBody: {fileID: 4848622394727466227}
   playerMovement: {fileID: 8620819492233591200}

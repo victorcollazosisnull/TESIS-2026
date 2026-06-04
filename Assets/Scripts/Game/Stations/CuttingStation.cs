@@ -10,6 +10,8 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
 
     [Header("Sounds")]
     [SerializeField] private SoundData cutSound;
+    [SerializeField] private SoundData placeSound;
+    [SerializeField] private SoundData pickupSound;
 
     private PickupObject currentObject;
 
@@ -39,6 +41,7 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
             .SetEase(Ease.InOutSine);
         }
     }
+
     private void Update()
     {
         if (arrowUI == null) return;
@@ -54,14 +57,13 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
                 Ingredient ingredient = held.GetComponent<Ingredient>();
 
                 if (ingredient != null && ingredient.CanBeCut())
-                {
                     shouldShow = true;
-                }
             }
         }
 
         arrowUI.SetActive(shouldShow);
     }
+
     public void Interact()
     {
         if (playerHold.IsHolding())
@@ -82,7 +84,6 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
             }
 
             currentObject = held;
-
             currentObject.SetAssignedStation(this);
 
             canHighlight = true;
@@ -98,6 +99,8 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
 
             Transform visual = held.transform.GetChild(0);
             visual.localRotation = Quaternion.Euler(ingredient.cuttingRotation);
+
+            AudioManager.Instance.Play(placeSound);
 
             Debug.Log("Objeto colocado en mesa");
             return;
@@ -129,9 +132,7 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
                 cutObj.GetComponent<Collider>().enabled = true;
                 cutObj.SetCanDrop(false);
                 cutObj.SetHighlight(true);
-
                 cutObj.SetAssignedStation(this);
-
                 currentObject = cutObj;
             }
 
@@ -164,9 +165,7 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
         foreach (Material mat in rend.materials)
         {
             if (mat.HasProperty("_EmissionColor"))
-            {
                 mat.SetColor("_EmissionColor", Color.black);
-            }
         }
     }
 
@@ -174,5 +173,7 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
     {
         currentObject = null;
         canHighlight = true;
+
+        AudioManager.Instance.Play(pickupSound);
     }
 }
