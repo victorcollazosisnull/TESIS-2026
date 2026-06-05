@@ -1,18 +1,17 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class GameLevelManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private GameObject speechBubble; 
     [SerializeField] private PlateStation plateStation;
-    //[SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PauseManager pauseManager;
 
     [Header("Messages")]
     [SerializeField] private string completeMessage;
-
     [SerializeField] private float typingSpeed = 0.03f;
 
     [Header("Scene")]
@@ -22,6 +21,9 @@ public class GameLevelManager : MonoBehaviour
 
     private void Start()
     {
+        if (speechBubble != null)
+            speechBubble.SetActive(false);
+
         StartCoroutine(LevelFlow());
     }
 
@@ -29,11 +31,12 @@ public class GameLevelManager : MonoBehaviour
     {
         yield return StartCoroutine(WaitForPlateComplete());
 
-        //playerMovement.canControl = false;
         pauseManager.canPause = false;
 
-        yield return StartCoroutine(TypeText(completeMessage));
+        if (speechBubble != null)
+            speechBubble.SetActive(true);
 
+        yield return StartCoroutine(TypeText(completeMessage));
         yield return new WaitForSeconds(2f);
 
         SceneTransitionManager.Instance.LoadScene(nextSceneName);
@@ -48,7 +51,6 @@ public class GameLevelManager : MonoBehaviour
                 levelCompleted = true;
                 break;
             }
-
             yield return null;
         }
     }
@@ -56,7 +58,6 @@ public class GameLevelManager : MonoBehaviour
     IEnumerator TypeText(string message)
     {
         levelText.text = "";
-
         for (int i = 0; i < message.Length; i++)
         {
             levelText.text += message[i];

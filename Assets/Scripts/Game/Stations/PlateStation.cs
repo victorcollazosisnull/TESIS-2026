@@ -20,12 +20,10 @@ public class PlateStation : MonoBehaviour, IInteractable
 
     private List<GameObject> spawnedVisuals = new List<GameObject>();
     private List<IngredientType> ingredients = new List<IngredientType>();
-
     private int currentIndex = 0;
 
     [Header("UI")]
     [SerializeField] private GameObject helpUI;
-
     [Header("Arrow Animation")]
     [SerializeField] private float moveAmount = 15f;
     [SerializeField] private float moveSpeed = 0.6f;
@@ -43,8 +41,7 @@ public class PlateStation : MonoBehaviour, IInteractable
         helpUI.SetActive(false);
 
         helpUI.transform.DOLocalMoveY(
-            helpUI.transform.localPosition.y + moveAmount,
-            moveSpeed)
+            helpUI.transform.localPosition.y + moveAmount, moveSpeed)
             .SetLoops(-1, LoopType.Yoyo)
             .SetEase(Ease.InOutSine);
     }
@@ -56,11 +53,9 @@ public class PlateStation : MonoBehaviour, IInteractable
         if (playerHold.IsHolding())
         {
             PickupObject held = playerHold.GetHeldObject();
-
             if (held != null)
             {
                 Ingredient ingredient = held.GetComponent<Ingredient>();
-
                 if (ingredient != null &&
                     ingredient.IsReadyForPlate() &&
                     validIngredients.Contains(ingredient.type) &&
@@ -80,7 +75,11 @@ public class PlateStation : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (!playerHold.IsHolding()) return;
+        if (!playerHold.IsHolding())
+        {
+            GameFeedbackUI.Instance?.Show("No tienes nada en la mano");
+            return;
+        }
 
         PickupObject held = playerHold.GetHeldObject();
         Ingredient ingredient = held.GetComponent<Ingredient>();
@@ -89,25 +88,25 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         if (!ingredient.IsReadyForPlate())
         {
-            Debug.Log("Ingrediente no válido para plato");
+            GameFeedbackUI.Instance?.Show("Este ingrediente aun no esta listo para el plato");
             return;
         }
 
         if (!validIngredients.Contains(ingredient.type))
         {
-            Debug.Log("Ingrediente no válido para plato");
+            GameFeedbackUI.Instance?.Show("Este ingrediente no va en este plato");
             return;
         }
 
         if (ingredients.Contains(ingredient.type))
         {
-            Debug.Log("Ingrediente repetido");
+            GameFeedbackUI.Instance?.Show("Este ingrediente ya esta en el plato");
             return;
         }
 
         if (currentIndex >= ingredientPoints.Length)
         {
-            Debug.Log("Plato lleno");
+            GameFeedbackUI.Instance?.Show("El plato ya esta completo");
             return;
         }
 
@@ -117,11 +116,7 @@ public class PlateStation : MonoBehaviour, IInteractable
         {
             GameObject visual = Instantiate(
                 ingredient.plateVisualPrefab,
-                point.position,
-                point.rotation,
-                point
-            );
-
+                point.position, point.rotation, point);
             spawnedVisuals.Add(visual);
         }
 
@@ -133,27 +128,19 @@ public class PlateStation : MonoBehaviour, IInteractable
 
         playerHold.Drop();
 
-        Debug.Log("Ingrediente agregado al plato (visual)");
-
         bool isLastIngredient = ingredients.Count == validIngredients.Count;
 
         if (isLastIngredient)
-        {
-            CompleteDish(); 
-        }
+            CompleteDish();
         else
-        {
             AudioManager.Instance.Play(placeSound);
-        }
     }
 
     void CompleteDish()
     {
         for (int i = 0; i < spawnedVisuals.Count; i++)
-        {
             if (spawnedVisuals[i] != null)
                 Destroy(spawnedVisuals[i]);
-        }
 
         spawnedVisuals.Clear();
 
@@ -164,8 +151,6 @@ public class PlateStation : MonoBehaviour, IInteractable
             completionParticles.Play();
 
         AudioManager.Instance.Play(victorySound);
-
-        Debug.Log("PLATO COMPLETADO");
     }
 
     public int GetCurrentCount() => ingredients.Count;

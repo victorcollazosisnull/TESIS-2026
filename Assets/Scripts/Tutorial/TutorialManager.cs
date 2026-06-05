@@ -7,12 +7,12 @@ public class TutorialManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private TextMeshProUGUI tutorialText;
+    [SerializeField] private GameObject speechBubble; 
     [SerializeField] private PauseManager pauseManager;
 
     [Header("Tutorial Texts")]
     [TextArea]
     [SerializeField] private string[] tutorialMessages;
-
     [SerializeField] private float typingSpeed = 0.03f;
     [SerializeField] private float delayBetweenMessages = 1.5f;
 
@@ -27,7 +27,6 @@ public class TutorialManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
         StartCoroutine(TutorialFlow());
     }
 
@@ -36,9 +35,10 @@ public class TutorialManager : MonoBehaviour
         pauseManager.canPause = false;
         playerMovement.canControl = false;
 
-        SceneTransitionManager.Instance.FadeOutStart();
+        ShowBubble(true);
 
-        yield return new WaitForSeconds(1f); 
+        SceneTransitionManager.Instance.FadeOutStart();
+        yield return new WaitForSeconds(1f);
 
         for (int i = 0; i < tutorialMessages.Length; i++)
         {
@@ -46,11 +46,14 @@ public class TutorialManager : MonoBehaviour
             yield return new WaitForSeconds(delayBetweenMessages);
         }
 
+        ShowBubble(false);
+
         playerMovement.canControl = true;
         pauseManager.canPause = true;
 
         yield return StartCoroutine(WaitForPlateComplete());
 
+        ShowBubble(true);
         yield return StartCoroutine(TypeText("¡Felicidades! Completaste el tutorial"));
         yield return new WaitForSeconds(2f);
 
@@ -64,7 +67,6 @@ public class TutorialManager : MonoBehaviour
     IEnumerator TypeText(string message)
     {
         tutorialText.text = "";
-
         for (int i = 0; i < message.Length; i++)
         {
             tutorialText.text += message[i];
@@ -81,8 +83,13 @@ public class TutorialManager : MonoBehaviour
                 tutorialDone = true;
                 break;
             }
-
             yield return null;
         }
+    }
+
+    private void ShowBubble(bool show)
+    {
+        if (speechBubble != null)
+            speechBubble.SetActive(show);
     }
 }

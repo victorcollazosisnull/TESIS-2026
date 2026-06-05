@@ -33,12 +33,10 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
         if (arrowUI != null)
         {
             arrowUI.SetActive(false);
-
             arrowUI.transform.DOLocalMoveY(
-            arrowUI.transform.localPosition.y + moveAmount,
-            moveSpeed)
-            .SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.InOutSine);
+                arrowUI.transform.localPosition.y + moveAmount, moveSpeed)
+                .SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.InOutSine);
         }
     }
 
@@ -51,11 +49,9 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
         if (playerHold.IsHolding() && currentObject == null)
         {
             PickupObject held = playerHold.GetHeldObject();
-
             if (held != null)
             {
                 Ingredient ingredient = held.GetComponent<Ingredient>();
-
                 if (ingredient != null && ingredient.CanBeCut())
                     shouldShow = true;
             }
@@ -70,7 +66,7 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
         {
             if (currentObject != null)
             {
-                Debug.Log("Ya hay algo en la mesa");
+                GameFeedbackUI.Instance?.Show("La mesa de picar ya tiene algo encima");
                 return;
             }
 
@@ -79,7 +75,7 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
 
             if (ingredient == null || !ingredient.CanBeCut())
             {
-                Debug.Log("No se puede colocar o cortar");
+                GameFeedbackUI.Instance?.Show("Este ingrediente no se puede picar aqui");
                 return;
             }
 
@@ -88,10 +84,8 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
 
             canHighlight = true;
             held.SetHighlight(false);
-
             held.Lock();
             held.GetComponent<Collider>().enabled = false;
-
             playerHold.Drop();
 
             held.transform.position = placePoint.position;
@@ -101,8 +95,6 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
             visual.localRotation = Quaternion.Euler(ingredient.cuttingRotation);
 
             AudioManager.Instance.Play(placeSound);
-
-            Debug.Log("Objeto colocado en mesa");
             return;
         }
 
@@ -110,7 +102,7 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
         {
             if (!playerHold.HasKnife())
             {
-                Debug.Log("Necesitas cuchillo");
+                GameFeedbackUI.Instance?.Show("Necesitas el cuchillo para picar");
                 return;
             }
 
@@ -138,9 +130,10 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
 
             canHighlight = false;
             UnHighlight();
-
-            Debug.Log("Ingrediente cortado");
+            return;
         }
+
+        GameFeedbackUI.Instance?.Show("Pon un ingrediente sobre la mesa primero");
     }
 
     public void Highlight()
@@ -173,7 +166,6 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
     {
         currentObject = null;
         canHighlight = true;
-
         AudioManager.Instance.Play(pickupSound);
     }
 }

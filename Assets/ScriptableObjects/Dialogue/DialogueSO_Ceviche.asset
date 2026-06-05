@@ -13,17 +13,16 @@ MonoBehaviour:
   m_Name: DialogueSO_Ceviche
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
   dialogueLines:
-  - "Hace muchos a\xF1os, las personas que viv\xEDan cerca del mar preparaban pescado
+  - "Hace muchos a\xF1os, las personas que vivian cerca del mar preparaban pescado
     fresco con ingredientes naturales. "
-  - "Con el tiempo, comenzaron a agregar lim\xF3n, cebolla y aj\xED para darle m\xE1s
-    sabor y frescura."
-  - "As\xED naci\xF3 el Ceviche, uno de los platos m\xE1s famosos y representativos
-    del Per\xFA."
-  - "El pescado se mezcla con jugo de lim\xF3n, creando un sabor \xFAnico y delicioso."
-  - "Tambi\xE9n se acompa\xF1a con choclo y camote, ingredientes tradicionales de
-    la costa peruana."
-  - "Hoy el ceviche representa la riqueza del mar, tradici\xF3n y alegr\xEDa de compartir
-    en familia."
+  - "Con el tiempo, comenzaron a agregar limon, cebolla y aji para darle m\xE1s sabor
+    y frescura."
+  - Asi nacio el Ceviche, uno de los platos mas famosos y representativos del Peru.
+  - El pescado se mezcla con jugo de limon, creando un sabor unico y delicioso.
+  - "Tambien se acompa\xF1a con choclo y camote, ingredientes tradicionales de la
+    costa peruana."
+  - Hoy el ceviche representa la riqueza del mar, tradicion y alegria de compartir
+    en familia.
   dialogueImages:
   - {fileID: 21300000, guid: cc044486dd7e22341b1f467e5facb52b, type: 3}
   - {fileID: 21300000, guid: d45df600bb5ed7145a3969165f14c26f, type: 3}
