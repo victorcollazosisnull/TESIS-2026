@@ -7,7 +7,7 @@ public class TutorialManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private TextMeshProUGUI tutorialText;
-    [SerializeField] private GameObject speechBubble; 
+    [SerializeField] private GameObject speechBubble;
     [SerializeField] private PauseManager pauseManager;
 
     [Header("Tutorial Texts")]
@@ -22,6 +22,8 @@ public class TutorialManager : MonoBehaviour
 
     [Header("Scene")]
     [SerializeField] private string nextSceneName = "Menu";
+
+    private const string TUTORIAL_COMPLETED_KEY = "TutorialCompleted";
 
     private void Start()
     {
@@ -52,6 +54,9 @@ public class TutorialManager : MonoBehaviour
         pauseManager.canPause = true;
 
         yield return StartCoroutine(WaitForPlateComplete());
+
+        PlayerPrefs.SetInt(TUTORIAL_COMPLETED_KEY, 1);
+        PlayerPrefs.Save();
 
         ShowBubble(true);
         yield return StartCoroutine(TypeText("¡Felicidades! Completaste el tutorial"));
