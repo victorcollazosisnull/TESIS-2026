@@ -100,14 +100,19 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
 
         if (currentObject != null)
         {
+            Ingredient ingredient = currentObject.GetComponent<Ingredient>();
+
+            if (ingredient == null)
+                return;
+
+            if (!ingredient.CanBeCut())
+                return;
+
             if (!playerHold.HasKnife())
             {
                 GameFeedbackUI.Instance?.Show("Necesitas el cuchillo para picar");
                 return;
             }
-
-            Ingredient ingredient = currentObject.GetComponent<Ingredient>();
-            if (ingredient == null || !ingredient.CanBeCut()) return;
 
             playerHold.PlayKnifeAnimation();
             AudioManager.Instance.Play(cutSound);
@@ -125,6 +130,7 @@ public class CuttingStation : MonoBehaviour, IInteractable, IHighlightable, ISta
                 cutObj.SetCanDrop(false);
                 cutObj.SetHighlight(true);
                 cutObj.SetAssignedStation(this);
+
                 currentObject = cutObj;
             }
 
