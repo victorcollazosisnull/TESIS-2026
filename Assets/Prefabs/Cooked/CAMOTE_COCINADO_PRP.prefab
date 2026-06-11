@@ -208,7 +208,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8, y: 0.51, z: 0.53}
+  m_Size: {x: 0.32, y: 0.17, z: 0.2}
   m_Center: {x: -0.013291798, y: 0.07076573, z: -0.15381491}
 --- !u!54 &6320726138410833121
 Rigidbody:
@@ -269,6 +269,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
   canDrop: 1
+  usePickupColliderSize: 1
+  inStationSize: {x: 0.73, y: 0.96, z: 0.76}
+  inHandSize: {x: 0.32, y: 0.17, z: 0.2}
   normalMat: {fileID: 2100000, guid: 47b7ab4e848a4ae43a39d3251192831b, type: 2}
   highlightMat: {fileID: 2100000, guid: 47b7ab4e848a4ae43a39d3251192831b, type: 2}
   highlightColor: {r: 0.5471698, g: 0.09892811, b: 0.090334624, a: 1}

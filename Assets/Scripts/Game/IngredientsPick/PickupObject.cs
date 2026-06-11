@@ -11,6 +11,11 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
     [SerializeField] private bool canDrop = true;
     private bool canHighlight = true;
 
+    [Header("Collider en olla (para poder sacarlo)")]
+    [SerializeField] private bool usePickupColliderSize = false;
+    [SerializeField] private Vector3 inStationSize = Vector3.one;   // tamaño grande (en olla)
+    [SerializeField] private Vector3 inHandSize = new Vector3(0.15f, 0.15f, 0.15f); // tamaño pequeño (en mano/mesa)
+
     [Header("Highlight")]
     [SerializeField] private Material normalMat;
     [SerializeField] private Material highlightMat;
@@ -35,9 +40,7 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
         for (int i = 0; i < rend.materials.Length; i++)
         {
             if (rend.materials[i].HasProperty("_Color"))
-            {
                 originalColors[i] = rend.materials[i].color;
-            }
         }
     }
 
@@ -51,6 +54,10 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
         rb.isKinematic = true;
         rb.useGravity = false;
         col.enabled = false;
+
+        // Al agarrarlo achicamos el collider para que no tape la mesa de picar
+        if (usePickupColliderSize)
+            SetColliderSize(inHandSize);
     }
 
     public void OnDrop()
@@ -60,25 +67,30 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
         col.enabled = true;
     }
 
-    public void Lock()
+    // Llamar desde CookingStation cuando el objeto cocinado aparece en la olla
+    public void SetStationColliderSize()
     {
-        isLocked = true;
+        if (usePickupColliderSize)
+            SetColliderSize(inStationSize);
     }
 
-    public void Unlock()
+    private void SetColliderSize(Vector3 size)
     {
-        isLocked = false;
+        if (col is BoxCollider box)
+            box.size = size;
+        else if (col is SphereCollider sphere)
+            sphere.radius = size.x;
+        else if (col is CapsuleCollider capsule)
+        {
+            capsule.radius = size.x;
+            capsule.height = size.y;
+        }
     }
 
-    public void SetCanDrop(bool value)
-    {
-        canDrop = value;
-    }
-
-    public bool CanDrop()
-    {
-        return canDrop;
-    }
+    public void Lock() { isLocked = true; }
+    public void Unlock() { isLocked = false; }
+    public void SetCanDrop(bool value) { canDrop = value; }
+    public bool CanDrop() { return canDrop; }
 
     public void Interact()
     {
@@ -120,19 +132,13 @@ public class PickupObject : MonoBehaviour, IInteractable, IHighlightable
         foreach (Material mat in rend.materials)
         {
             if (mat.HasProperty("_EmissionColor"))
-            {
                 mat.SetColor("_EmissionColor", Color.black);
-            }
         }
     }
 
     public void SetHighlight(bool value)
     {
         canHighlight = value;
-
-        if (!value)
-        {
-            UnHighlight();
-        }
+        if (!value) UnHighlight();
     }
 }

@@ -125,12 +125,6 @@ public class CookingStation : MonoBehaviour, IInteractable
             if (ingredient == null)
             {
                 Debug.Log("No es ingrediente");
-                return; 
-            }
-
-            if (!IsAccepted(ingredient.type))
-            {
-                Debug.Log("Este ingrediente no se cocina en la sartén");
                 return;
             }
 
@@ -243,6 +237,7 @@ public class CookingStation : MonoBehaviour, IInteractable
 
             cookedObj.SetCanDrop(false);
             cookedObj.Unlock();
+            cookedObj.SetStationColliderSize(); 
         }
 
         currentObject = null;
