@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
   canDrop: 1
+  usePickupColliderSize: 0
+  inStationSize: {x: 1, y: 1, z: 1}
+  inHandSize: {x: 0.15, y: 0.15, z: 0.15}
   normalMat: {fileID: 2100000, guid: a79ef42196f17a74697ce031c3f82292, type: 2}
   highlightMat: {fileID: 2100000, guid: 7a697b5d2c1309a4c82924b7f8c0fc65, type: 2}
   highlightColor: {r: 0.1792453, g: 0.0042274827, b: 0.0042274827, a: 1}
@@ -118,6 +121,7 @@ MonoBehaviour:
   isCooked: 0
   cutPrefab: {fileID: 0}
   cookedPrefab: {fileID: -9022765978589682666, guid: fd96e6a2dd1d7de42a1828194f8016ae, type: 3}
+  cuttingRotation: {x: 0, y: 0, z: 0}
   plateVisualPrefab: {fileID: 0}
 --- !u!1 &3090055225431855908
 GameObject:

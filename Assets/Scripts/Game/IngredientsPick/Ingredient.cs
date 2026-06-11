@@ -33,7 +33,9 @@ public class Ingredient : MonoBehaviour
 
         Camote,
         CamoteCooked,
-        CamoteCut
+        CamoteCut,
+
+        LomoSalteado
     }
 
     [Header("Type")]

@@ -131,9 +131,13 @@ public class PlateStation : MonoBehaviour, IInteractable
         bool isLastIngredient = ingredients.Count == validIngredients.Count;
 
         if (isLastIngredient)
+        {
             CompleteDish();
+        }
         else
+        {
             AudioManager.Instance.Play(placeSound);
+        }
     }
 
     void CompleteDish()

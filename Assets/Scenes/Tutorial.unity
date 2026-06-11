@@ -3781,10 +3781,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 700876793}
   - {fileID: 254417396}
   - {fileID: 1106197157}
   - {fileID: 1515146336}
+  - {fileID: 700876793}
   - {fileID: 845748320}
   - {fileID: 156511121}
   m_Father: {fileID: 0}
@@ -7734,6 +7734,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
   canDrop: 1
+  usePickupColliderSize: 0
+  inStationSize: {x: 1, y: 1, z: 1}
+  inHandSize: {x: 0.15, y: 0.15, z: 0.15}
   normalMat: {fileID: 2100000, guid: 8507e86f149281442aa5d09878fe5d09, type: 2}
   highlightMat: {fileID: 2100000, guid: b1ad9885dff894444b7b46ea92243008, type: 2}
   highlightColor: {r: 0.3490566, g: 0.34082413, b: 0.34082413, a: 1}
@@ -9919,6 +9922,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PickupObject
   canDrop: 1
+  usePickupColliderSize: 0
+  inStationSize: {x: 1, y: 1, z: 1}
+  inHandSize: {x: 0.15, y: 0.15, z: 0.15}
   normalMat: {fileID: 2100000, guid: a6e8edf7d7e4f7c45b080b20de5cbfe7, type: 2}
   highlightMat: {fileID: 2100000, guid: 628910bf1892b5a4185a7d05850488e8, type: 2}
   highlightColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}

@@ -29,19 +29,20 @@ public class CookingStation : MonoBehaviour, IInteractable
     [SerializeField] private float moveAmount = 15f;
     [SerializeField] private float moveSpeed = 0.6f;
 
+
     private float timer = 0f;
     private bool isCooking = false;
 
     private static readonly Ingredient.IngredientType[] acceptedTypes = new[]
     {
         Ingredient.IngredientType.PapaCut,
-        Ingredient.IngredientType.CarneCut,
         Ingredient.IngredientType.Choclo,
         Ingredient.IngredientType.Camote,
     };
 
     private void Start()
     {
+
         cookText.SetActive(false);
         canvasUI.SetActive(false);
 
@@ -82,14 +83,21 @@ public class CookingStation : MonoBehaviour, IInteractable
 
         bool shouldShow = false;
 
+        // Ingredientes válidos
         if (!isCooking && currentObject == null && playerHold.IsHolding())
         {
             PickupObject held = playerHold.GetHeldObject();
+
             if (held != null)
             {
                 Ingredient ingredient = held.GetComponent<Ingredient>();
-                if (ingredient != null && ingredient.CanBeCooked() && IsAccepted(ingredient.type))
+
+                if (ingredient != null &&
+                    ingredient.CanBeCooked() &&
+                    IsAccepted(ingredient.type))
+                {
                     shouldShow = true;
+                }
             }
         }
 
@@ -105,6 +113,7 @@ public class CookingStation : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+
         if (isCooking)
         {
             Debug.Log("Está cocinando...");
@@ -113,6 +122,7 @@ public class CookingStation : MonoBehaviour, IInteractable
 
         if (playerHold.IsHolding())
         {
+
             if (currentObject != null)
             {
                 Debug.Log("Ya hay algo en la sartén");
@@ -131,6 +141,12 @@ public class CookingStation : MonoBehaviour, IInteractable
             if (!ingredient.CanBeCooked())
             {
                 Debug.Log("No se puede cocinar");
+                return;
+            }
+
+            if (!IsAccepted(ingredient.type))
+            {
+                Debug.Log("Este ingrediente no va en esta sartén");
                 return;
             }
 

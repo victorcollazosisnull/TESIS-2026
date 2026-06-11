@@ -6,6 +6,8 @@ public class PlayerHold : MonoBehaviour
     [SerializeField] private Transform holdPoint;
     [SerializeField] private GameObject knifeVisual;
     [SerializeField] private GameObject juiceVisual;
+    [SerializeField] private GameObject vinegarHand;
+    [SerializeField] private GameObject soySauceHand;
 
     [Header("Animations")]
     [SerializeField] private Animator knifeAnimator;
@@ -13,6 +15,8 @@ public class PlayerHold : MonoBehaviour
     private PickupObject currentObject;
     private bool hasKnife = false;
     private bool hasJuicer = false;
+    private bool hasVinegar;
+    private bool hasSoySauce;
     public bool IsHolding()
     {
         return currentObject != null;
@@ -21,10 +25,12 @@ public class PlayerHold : MonoBehaviour
     public PickupObject GetHeldObject()
     {
         return currentObject;
-    }
+    } 
 
     public void PickUp(PickupObject obj)
     {
+
+        Debug.Log("PICKUP: " + obj.name);
         if (HasAnyTool()) return;
 
         currentObject = obj;
@@ -98,6 +104,41 @@ public class PlayerHold : MonoBehaviour
 
     public bool HasAnyTool()
     {
-        return hasKnife || hasJuicer;
+        return hasKnife ||
+               hasJuicer ||
+               hasVinegar ||
+               hasSoySauce;
+    }
+    public void TakeVinegar()
+    {
+        hasVinegar = true;
+        vinegarHand.SetActive(true);
+    }
+
+    public void ReturnVinegar()
+    {
+        hasVinegar = false;
+        vinegarHand.SetActive(false);
+    }
+
+    public bool HasVinegar()
+    {
+        return hasVinegar;
+    }
+    public void TakeSoySauce()
+    {
+        hasSoySauce = true;
+        soySauceHand.SetActive(true);
+    }
+
+    public void ReturnSoySauce()
+    {
+        hasSoySauce = false;
+        soySauceHand.SetActive(false);
+    }
+
+    public bool HasSoySauce()
+    {
+        return hasSoySauce;
     }
 }

@@ -51,6 +51,7 @@ public class GameLevelManager : MonoBehaviour
                 levelCompleted = true;
                 break;
             }
+
             yield return null;
         }
     }
