@@ -164,8 +164,6 @@ public class WokStation : MonoBehaviour, IInteractable, IHighlightable, IStation
             {
                 vinegarAdded = true;
 
-                playerHold.ReturnVinegar();
-
                 GameFeedbackUI.Instance?.Show("Vinagre agregado");
 
                 if (CanCook() && cookText != null)
@@ -177,8 +175,6 @@ public class WokStation : MonoBehaviour, IInteractable, IHighlightable, IStation
             if (playerHold.HasSoySauce() && !soySauceAdded)
             {
                 soySauceAdded = true;
-
-                playerHold.ReturnSoySauce();
 
                 GameFeedbackUI.Instance?.Show("Sillao agregado");
 
@@ -255,7 +251,7 @@ public class WokStation : MonoBehaviour, IInteractable, IHighlightable, IStation
         if (GetFilledSlots() == 0)
             GameFeedbackUI.Instance?.Show("Pon carne, cebolla y tomate picados en el wok");
         else
-            GameFeedbackUI.Instance?.Show($"Faltan {requiredTypes.Length - GetFilledSlots()} ingredientes mas");
+            GameFeedbackUI.Instance?.Show($"Faltan mas ingredientes mas");
     }
 
     private void StartCooking()

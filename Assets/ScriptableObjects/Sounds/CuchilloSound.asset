@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CuchilloSound
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: 0705d3d7c3e93ce45b318dfd2f774107, type: 3}
+  clip: {fileID: 8300000, guid: 9f65c2d8647ce1b41b108c6aee041b0c, type: 3}
   volume: 1
   loop: 0

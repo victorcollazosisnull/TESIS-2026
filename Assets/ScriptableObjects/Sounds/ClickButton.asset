@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ClickButton
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: 9b50ca52572b05e4fad0071a33afb81e, type: 3}
+  clip: {fileID: 8300000, guid: 5794ca15eaaf35a4da8794751694b0df, type: 3}
   volume: 1
   loop: 0

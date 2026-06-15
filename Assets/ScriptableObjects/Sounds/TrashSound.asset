@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TrashSound
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: 6b08ecad7d38e8e439f2fdf5eda5db1d, type: 3}
+  clip: {fileID: 8300000, guid: b579e646bca40da4d928096214474abb, type: 3}
   volume: 1
   loop: 0

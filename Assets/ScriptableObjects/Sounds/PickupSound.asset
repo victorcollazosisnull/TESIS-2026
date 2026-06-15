@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PickupSound
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: b010c3aac0c6404418a1edc04023d385, type: 3}
+  clip: {fileID: 8300000, guid: 55d9d8d02a05380488ec759ba1901206, type: 3}
   volume: 1
   loop: 0

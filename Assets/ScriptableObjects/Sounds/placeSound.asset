@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: placeSound
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: 1bd55b0dad069e74abad2d5e24c856c6, type: 3}
+  clip: {fileID: 8300000, guid: 3bbe907b1771c274c9f61db4458bf1ae, type: 3}
   volume: 1
   loop: 0

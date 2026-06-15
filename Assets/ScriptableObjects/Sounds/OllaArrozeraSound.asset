@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: OllaArrozeraSound
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: 35556406526901f4a8e0c3c7bdc382a2, type: 3}
+  clip: {fileID: 8300000, guid: 3fd3253e81ead2945a83dbd7e333e5cf, type: 3}
   volume: 1
   loop: 0

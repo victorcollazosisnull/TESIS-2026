@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HoverButton
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: 1791a0feecb10854493c354ecc0d4349, type: 3}
+  clip: {fileID: 8300000, guid: 480ca6f08fd80784491f83c5951456bf, type: 3}
   volume: 1
   loop: 0

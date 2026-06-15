@@ -255,8 +255,8 @@ MonoBehaviour:
   inHandSize: {x: 0.2801659, y: 0.3442589, z: 0.3576382}
   normalMat: {fileID: 2100000, guid: a6341789efb31a344ba1294db5922d16, type: 2}
   highlightMat: {fileID: 2100000, guid: a6341789efb31a344ba1294db5922d16, type: 2}
-  highlightColor: {r: 0.6226415, g: 0.21706769, b: 0, a: 1}
-  intensity: 0.7
+  highlightColor: {r: 0.745283, g: 0.2578023, b: 0, a: 1}
+  intensity: 0.9
 --- !u!114 &7231838639043182887
 MonoBehaviour:
   m_ObjectHideFlags: 0

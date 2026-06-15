@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SartenSound
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: a8ea86aa37c0b7c4087cf473612b095d, type: 3}
+  clip: {fileID: 8300000, guid: f742c90ef23593044abf39e6b93a910b, type: 3}
   volume: 1
   loop: 0

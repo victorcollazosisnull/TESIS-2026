@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: OllaSound
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: b90b8d3d62e734246bb73e72bb4174c4, type: 3}
+  clip: {fileID: 8300000, guid: edec6229fced7d54381eea6d253cbac6, type: 3}
   volume: 1
   loop: 0

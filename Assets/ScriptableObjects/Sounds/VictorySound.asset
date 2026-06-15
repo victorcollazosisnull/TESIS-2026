@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: VictorySound
   m_EditorClassIdentifier: Assembly-CSharp::SoundData
   type: 1
-  clip: {fileID: 8300000, guid: d3b46b1f7849ce54c847761b5c7b9070, type: 3}
+  clip: {fileID: 8300000, guid: 2e5fbb665046549469cfdc55814b0122, type: 3}
   volume: 1
   loop: 0
